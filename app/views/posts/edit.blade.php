@@ -1,0 +1,1 @@
+C:\reconnect\app/views/posts/edit.blade.php

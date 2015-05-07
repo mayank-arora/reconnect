@@ -16,13 +16,24 @@ class HomeController extends BaseController {
 	public function attemptLogin()
 	{
 		$creds= Input::all();
-		if( Auth::attempt(array('email' => Input::get('email') , 'password' => Input::get('password') )))
+
+		if($user = User::where('email', '=' , Input::get('email'))->first()){}
+		else
 		{
-			return Redirect::route('home');
+			return Redirect::back()->with('data',  Input::all());
+		}
+
+		if( Auth::attempt(array('email' => Input::get('email') , 'password' => Input::get('password'), 'status' => '1')))
+		{
+			return Redirect::intended('home');
+		}
+		elseif( $user->status == 0 )
+		{
+			return Redirect::back()->with('verify',  Input::all());
 		}
 		else
 		{
-			return Redirect::to('/');
+			return Redirect::back()->with('data',  Input::all());
 		}
 	}
 	public function logout(){
@@ -31,21 +42,15 @@ class HomeController extends BaseController {
 	}
 	public function showHome()
 	{
+		$user = Auth::user();
+		if ($user->batch_id == 0) {
+			return Redirect::route('users.edit', Auth::id());
+		}
+		else{	
 		$posts=Post::orderby('id', 'desc')->get();
 		return View::make('home', array('posts' => $posts));
+		}
 	}
-	public function showEvent()
-	{
-		$posts=Post::all();
-		return View::make('home', array('posts' => $posts));
-	}
-	/**
-	 * public function showCollege()
-	*{}
-	*	$locations=Location::all();
-	*	return View::make('college', array('locations' => $locations));
-	*}
-	 */
 	public function showSearch()
 	{
 		$locations=Location::has('users')->get();

@@ -10,6 +10,139 @@ a{
 .navbar{
 	border-radius: 0;
 }
+/*--------------------------------
+------------Login Page------------
+----------------------------------*/
+.login-title-div{
+	position: absolute;
+	top 0px;
+	width: 100vw;
+	height: 10vh;
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	padding-left: 8px;
+}
+#login-reco{
+	letter-spacing: 1px;
+	font-size: 60px;
+	color: #383960;
+}
+#login-nect{
+	letter-spacing: 1px;
+	font-size: 60px;
+	color: #C9CFE7;
+}
+.login-logo-div{
+	height: 100vh;
+	background-color: #C9CFE7;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.login-form-div{
+	height: 100vh;
+	background-color: #383960;
+	display: flex;
+	align-items:center;
+	justify-content:center;
+}
+.login-success-div{
+	text-align: center;
+	color: #fff;
+}
+.login-form-input{
+	color: #fff;
+	width: 300px;
+	height: 50px;
+	background: none;
+	outline: none;
+	border: none;
+	border-bottom: 1px solid #aaa;
+	padding-left: 10px;
+	font-size: 15px;
+	letter-spacing: 1px;
+}
+.login-form-input:hover{
+	color: #fff;
+	width: 300px;
+	height: 50px;
+	background: none;
+	outline: none;
+	border: none;
+	border-bottom: 1px solid #fff;
+	padding-left: 10px;
+	font-size: 15px;
+	letter-spacing: 1px;
+	-webkit-transition: border-bottom 0.2s;
+	-o-transition: border-bottom 0.2s;
+	transition: border-bottom 0.2s;
+}
+.login-form-input:focus{
+	color: #fff;
+	width: 300px;
+	height: 50px;
+	background: none;
+	outline: none;
+	border: none;
+	border-bottom: 1px solid #fff;
+	padding-left: 10px;
+	font-size: 15px;
+	letter-spacing: 1px;
+	-webkit-transition: border-bottom 0.2s;
+	-o-transition: border-bottom 0.2s;
+	transition: border-bottom 0.2s;
+}
+.login-form-button{
+	width: 150px;
+	height: 50px;
+	outline: none
+	padding: 0;
+	margin: 0;
+	background: none;
+	border: none;
+	color: #fff;
+}
+.login-form-button:hover{
+	background: rgba(255,255,255,0.1);
+	-webkit-transition: background 0.2s;
+	-o-transition: background 0.2s;
+	transition: background 0.2s;
+	color: #fff;
+	outline: none
+}
+.login-form-button:focus{
+	background: rgba(255,255,255,0.1);
+	-webkit-transition: background 0.2s;
+	-o-transition: background 0.2s;
+	transition: background 0.2s;
+	color: #fff;
+	outline: none
+}
+.login-forgot-password{
+	position: absolute;
+	bottom:10px;
+	right:10px;
+	color: #fff;
+}
+.login-forgot-password:hover{
+	color: #fff;
+}
+.login-forgot-password:focus{
+	color: #fff;
+}
+.login-error-text{
+	color: #fff;
+	font-size: 11px;
+}
+
+
+
+
+
+
+
 .profile-display-pic{
 	width: 90%;
 	margin-right: auto;
@@ -21,6 +154,7 @@ a{
 }
 .white-container{
 	padding: 10px;
+	position: relative;
 	background-color: #fff;
 	overflow: hidden;
 	margin-bottom: 10px;
@@ -52,27 +186,27 @@ a{
 ----------------------------------*/
 
 .grey-text{
-	color: #aaa;
+	color: #ccc;
 }
 .edit-pen{
 	position:absolute;
-	right:30px;
+	right:10px;
 	padding: 5px;
+	font-size: 30px;
 }
 .edit-pen-highlight{
 	position:absolute;
-	right:30px;
-	color:#fff !important;
-	background-color: #337AB7;
+	right:10px;
+	color:#337AB7 !important;
 	padding: 5px;
-	border-radius: 3px;
+	font-size: 30px;
 }
 .profile-view-more{
 	cursor: pointer;
 }
 .profile-detail-div{
 	padding: 10px 0 10px 0;
-	border-bottom: solid 1px #eee;
+	/*display: flex;*/
 }
 .social-links-div{
 	padding: 10px 0 10px 0;
@@ -86,7 +220,51 @@ a{
 .social-links:hover{
 	text-decoration: none;
 }
+.add-btn{
+	position: absolute;
+	color: #ccc;
+	top:30px;
+	right:10px;
+	cursor: pointer;
+	font-size: 30px;
+}
+.add-btn:hover{
+	position: absolute;
+	top:30px;
+	right:10px;
+	cursor: pointer;
+	color: #337AB7;
+	font-size: 30px;
+}
+.profile-data-element-container{
+	min-height: 50px;
+	padding: 5px;
+	margin: 10px 0 10px 0;
+	border-radius: 3px;
+	display:flex;
+	flex-direction:row;
+}
+.profile-data-element-year{
+	border-radius: 3px;
+	width: 20%;
+	min-height: 50px;
+	height: 100%;
+	padding: 10px;
+	text-align: center;
+	vertical-align: center;
+	font-size: 1.4em;
+	color: #ccc;
+	letter-spacing: 1px;
 
+}
+.profile-data-element-description{
+	border-radius: 3px;
+	min-height: 50px;
+	margin-right: 10px;
+	margin-left: auto;
+	padding: 13px 10px 13px 10px;
+	width: 77%
+}
 
 /*--------------------------------
 --------Discussion Page-----------
@@ -246,34 +424,6 @@ a{
 .message-send:hover{
 	color:#337AB7;
 }
-/*.message-text{
-	height: 50px;
-	width: 90%;
-	margin-right: auto;
-	margin-left: auto;
-	margin-bottom: 20px;
-	margin-top: 20px;
-}
-.incoming-textbox{
-	width: 70%;
-	border-radius: 3px;
-	background-color: #337AB7;
-	min-height: 50px;
-	padding: 10px;
-	color: #fff;
-	word-wrap:break-word;
-	float: left;
-}
-.outgoing-textbox{
-	width: 70%;
-	border-radius: 3px;
-	background-color: #eee;
-	min-height: 50px;
-	padding: 10px;
-	word-wrap:break-word;
-	float: right;
-
-}*/
 .message-text-in{
 	width: 100%;
 	min-height: 50px;

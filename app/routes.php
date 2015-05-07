@@ -16,6 +16,7 @@ Route::get('login', array('uses' => 'HomeController@showLogin' , 'as' => 'home.a
 Route::post('login', array('uses' => 'HomeController@attemptLogin', 'as' => 'users.login'));
 Route::get('logout', array('uses' => 'HomeController@logout', 'as' => 'users.logout'));
 Route::post('users', array('uses' => 'UsersController@store', 'as' => 'users.store'));
+Route::get('users/verify/{token}', array('uses' => 'UsersController@verify', 'as' => 'users.verify'));
 
 
 Route::group(array('before' => 'auth'), function(){
@@ -31,6 +32,11 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('users/batch/{id}', array('uses' => 'UsersController@batchUser', 'as' => 'users.batch'));
 	Route::get('users/profession/{id}', array('uses' => 'UsersController@professionUser', 'as' => 'users.profession'));
 	Route::get('users/domain/{id}', array('uses' => 'UsersController@domainUser', 'as' => 'users.domain'));
+	Route::post('users/addaward/{id}', array('uses' => 'UsersController@addAward', 'as' => 'users.add.award'));
+	Route::post('users/addrole/{id}', array('uses' => 'UsersController@addRole', 'as' => 'users.add.role'));
+	Route::post('users/addachievement/{id}', array('uses' => 'UsersController@addAchievement', 'as' => 'users.add.achievement'));
+	Route::post('users/addstudy/{id}', array('uses' => 'UsersController@addStudy', 'as' => 'users.add.study'));
+	Route::post('users/addcsr/{id}', array('uses' => 'UsersController@addCsr', 'as' => 'users.add.csr'));
 	Route::resource('users','UsersController', array('except' => array('store', 'create')));
 
 	Route::get('jobs/apply/{id}', array('uses' => 'JobsController@apply', 'as' => 'jobs.apply'));
@@ -39,7 +45,6 @@ Route::group(array('before' => 'auth'), function(){
 	Route::resource('jobs', 'JobsController');
 	
 	Route::get('home', array('uses' => 'HomeController@showHome', 'as' => 'home'));
-	Route::get('events', array('uses' => 'HomeController@showEvent', 'as' => 'events'));
 	Route::get('search', array('uses' => 'HomeController@showSearch', 'as' => 'search'));
 	Route::get('discussion', array('uses' => 'HomeController@showDiscussion', 'as' => 'discussion'));
 	Route::get('settings', array('uses' => 'HomeController@showSettings', 'as' => 'settings'));

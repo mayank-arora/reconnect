@@ -8,12 +8,27 @@ class LocationsController extends \BaseController {
 		$json =json_decode(file_get_contents($url));
 		return $json->results['0'];
 	}
+	public function getCity($loc){
+		foreach ($loc->address_components as $key => $value) {
+			if($value->types['0'] == 'country'){
+				$country = $value->long_name;
+			}
+			if($value->types['0'] == 'locality'){
+				$city = $value->long_name;
+			}
+			if($value->types['0'] == 'administrative_area_level_1'){
+				$state = $value->long_name;
+			}
+		}
+		return $city.','.$state.','.$country;
+	}
 
 	public function getLocationId($loc){
 		foreach ($loc->address_components as $key => $value) {
 			if($value->types['0'] == 'country'){
 				$country = $value->long_name;
-			}if($value->types['0'] == 'locality'){
+			}
+			if($value->types['0'] == 'locality'){
 				$city = $value->long_name;
 			}
 		}

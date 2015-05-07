@@ -10,7 +10,6 @@ class EventsController extends \BaseController {
 	public function index()
 	{
 		$events = Event::all();
-
 		return View::make('events.index', compact('events'));
 	}
 

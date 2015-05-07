@@ -2,6 +2,69 @@
 
 class UsersController extends \BaseController {
 
+
+
+	public function createNewProfileData()
+	{
+		// Structure of the profile data
+
+		// array(data)
+		// {
+		// 	array(awards)
+		// 	{
+		// 		'year' => 'description'
+		// 		.
+		// 		.
+		// 		.
+		// 	}
+		// 	array(roles)
+		// 	{
+		// 		'year' => 'description'
+		// 		.
+		// 		.
+		// 		.
+		// 	}
+		// 	array(achievements)
+		// 	{
+		// 		'year' => 'description'
+		// 		.
+		// 		.
+		// 		.
+		// 	}
+		// 	array(studies)
+		// 	{
+		// 		'year' => 'description'
+		// 		.
+		// 		.
+		// 		.
+		// 	}
+		// 	array(CSRs)
+		// 	{
+		// 		'year' => 'description'
+		// 		.
+		// 		.
+		// 		.
+		// 	}
+		// array(enterpreneur)
+		//  {
+		// 		'status' => 'value'
+		//  }
+		// 	array(help)
+		// 	{
+				// 'techTalk' => 'status'
+				// 'workshop' => 'status'
+				// 'projectAssistance' => 'status'
+				// 'guidance' => 'status'
+		// 	}	
+		// }
+
+		$obj = new stdClass;
+		$arr = array();
+		$megaArr = array($arr, $arr, $arr, $arr, $arr, array('status' => 0), array('Tech Talks' => 0, 'Workshops' => 0, 'Project Assistance' => 0, 'Guidance' => 0));
+		$megaArr = json_encode($megaArr);
+		return $megaArr;
+	}
+
 	/**
 	 * Store a newly created user in storage.
 	 *
@@ -17,10 +80,39 @@ class UsersController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 		$data['password'] = Hash::make($data['password']);
+		$data['status'] = 0;
+		$data['token'] = Str::random(50);
+		$email = $data['email'];
+		$token = $data['token'];
+		$data['profile_data'] = App::make('UsersController')->createNewProfileData();
 
+		Mail::send('emails.auth.verify', array('token' => $token), function($message) use ($email)
+		{
+			$message->to($email)->subject('Verify your account for BMSITM Reconnect');
+		});
 		User::create($data);
 
-		return Redirect::route('home.login');
+		return Redirect::route('home.login')->with('success', Input::all());
+	}
+
+	/**
+	 * Verify a user's auth token and activate the account
+	 */
+	public function verify($token)
+	{
+		$user = User::where('token', '=', $token)->first();
+		// var_dump($user);
+		if(!$user)
+		{
+			return Redirect::route('home.login');
+		}
+		else
+		{
+			$user->status = 1;
+			$user->token = NULL;
+			$user->save();
+			return Redirect::route('home.login');
+		}
 	}
 
 	/**
@@ -32,8 +124,8 @@ class UsersController extends \BaseController {
 	public function show($id)
 	{
 		$user = User::find($id);
-
-		return View::make('users.show', compact('user'));
+		$profile_data = json_decode($user->profile_data);
+		return View::make('users.show', compact('user', 'profile_data'));
 	}
 
 	/**
@@ -84,15 +176,39 @@ class UsersController extends \BaseController {
 		 */
 
 		$location = App::make('LocationsController')->getLocation($data['location_id']);
+		// var_dump($location->address_components);
+		$location = App::make('LocationsController')->getCity($location);
+		// var_dump($location);
+		$location = App::make('LocationsController')->getLocation($location);
+		// var_dump($location);
 		$loc_id = App::make('LocationsController')->getLocationId($location);
 		$data['location_id'] = $loc_id;
+		// var_dump(Location::find($loc_id));
 
+		$domains =array();
 		if(isset($data['domain'])){
 			$domains = $data['domain'];
 			unset($data['domain']);
 			$user->domains()->sync($domains);
-			//var_dump($domains);
 		}
+		// var_dump($domains);
+		if($data['new_domain'] != '')
+		{
+			$domain = Domain::create(array('name' => $data['new_domain']));
+			$domain =array($domain->id);
+			// var_dump($domain);
+			$domains = array_merge($domains, $domain);
+			// var_dump($domains);
+			$user->domains()->sync($domains);
+			
+		}
+		if($data['new_company'] != '')
+		{
+			$company = Company::create(array('name' => $data['new_company']));
+			$data['company_id'] = $company->id;
+		}
+		unset($data['new_company']);
+		unset($data['new_domain']);
 
 		$user->update($data);
 		//var_dump($data);
@@ -187,5 +303,125 @@ class UsersController extends \BaseController {
 	{
 		$domain = Domain::findOrFail($id);
 		return View::make('users.domain', compact('domain'));
+	}
+	public function addAward($id)
+	{
+		$user = User::find($id);
+		$data = json_decode($user->profile_data);
+		$input = Input::all();
+		$validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+		// var_dump($input);
+		// var_dump($data);
+		// var_dump($data[0]);
+		$node = new stdClass;
+		$node->year = $input['year'];
+		$node->description = $input['description'];
+		// var_dump($node);
+		$data[0][] = $node;
+		// array_push($data[0], $input);
+		// var_dump($data);
+		$user->profile_data = json_encode($data);
+		$user->save();
+		return Redirect::route('users.show', $user->id);
+	}
+	public function addRole($id)
+	{
+		$user = User::find($id);
+		$data = json_decode($user->profile_data);
+		$input = Input::all();
+		$validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+		// var_dump($input);
+		// var_dump($data);
+		// var_dump($data[0]);
+		$node = new stdClass;
+		$node->year = $input['year'];
+		$node->description = $input['description'];
+		// var_dump($node);
+		$data[1][] = $node;
+		// array_push($data[0], $input);
+		// var_dump($data);
+		$user->profile_data = json_encode($data);
+		$user->save();
+		return Redirect::route('users.show', $user->id);
+	}
+	public function addAchievement($id)
+	{
+		$user = User::find($id);
+		$data = json_decode($user->profile_data);
+		$input = Input::all();
+		$validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+		// var_dump($input);
+		// var_dump($data);
+		// var_dump($data[0]);
+		$node = new stdClass;
+		$node->year = $input['year'];
+		$node->description = $input['description'];
+		// var_dump($node);
+		$data[2][] = $node;
+		// array_push($data[0], $input);
+		// var_dump($data);
+		$user->profile_data = json_encode($data);
+		$user->save();
+		return Redirect::route('users.show', $user->id);
+	}
+	public function addStudy($id)
+	{
+		$user = User::find($id);
+		$data = json_decode($user->profile_data);
+		$input = Input::all();
+		$validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+		// var_dump($input);
+		// var_dump($data);
+		// var_dump($data[0]);
+		$node = new stdClass;
+		$node->year = $input['year'];
+		$node->description = $input['description'];
+		// var_dump($node);
+		$data[3][] = $node;
+		// array_push($data[0], $input);
+		// var_dump($data);
+		$user->profile_data = json_encode($data);
+		$user->save();
+		return Redirect::route('users.show', $user->id);
+	}
+	public function addCsr($id)
+	{
+		$user = User::find($id);
+		$data = json_decode($user->profile_data);
+		$input = Input::all();
+		$validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+		// var_dump($input);
+		// var_dump($data);
+		// var_dump($data[0]);
+		$node = new stdClass;
+		$node->year = $input['year'];
+		$node->description = $input['description'];
+		// var_dump($node);
+		$data[4][] = $node;
+		// array_push($data[0], $input);
+		// var_dump($data);
+		$user->profile_data = json_encode($data);
+		$user->save();
+		return Redirect::route('users.show', $user->id);
 	}
 }

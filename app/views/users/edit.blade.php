@@ -7,7 +7,7 @@
 <script>
 function initialize(){
 	autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')),
-		{types:['(regions)']});
+		{types:['(cities)']});
 	google.maps.event.addListener(autocomplete, 'place changed', function(){
 		fillLcoation()
 	});
@@ -37,7 +37,7 @@ function fillLocation(){
 			{{Form::open(array('route'=>array('user.updatePicture', $user->id), 'method'=>'Post' , 'files'=>true))}}
 			{{Form::file('image')}}
 			<hr>
-			<input type="submit" value="Upload" class="btn btn-primary">
+			<input type="submit" value="Upload" class=" col-md-4 btn btn-primary">
 		</form>
 	</div>
 	<div class="col-md-8">
@@ -74,7 +74,7 @@ function fillLocation(){
 				</select>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-group hidden" id="form-degree">
 			{{Form::label('degree_id' , 'Degree' , array('class' => 'control-label col-md-3'))}}
 			<div class="col-md-3">
 				<select name="degree_id" id="degree" class="form-control selectpicker">
@@ -88,7 +88,7 @@ function fillLocation(){
 				</select>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-group hidden" id="form-branch">
 			{{Form::label('branch_id' , 'Branch' , array('class' => 'control-label col-md-3'))}}
 			<div class="col-md-6">
 				<select name="branch_id" id="branch" class="form-control selectpicker">
@@ -145,7 +145,7 @@ function fillLocation(){
 			</div>
 		</div>
 		<div class="form-group">
-			{{Form::label('company_id' , 'Company' , array('class' => 'control-label col-md-3'))}}
+			{{Form::label('company_id' , 'Organisation' , array('class' => 'control-label col-md-3'))}}
 			<div class="col-md-4">
 				<select name="company_id" id="company" class="form-control selectpicker" data-live-search="true">
 					@foreach($companies as $company)
@@ -156,6 +156,13 @@ function fillLocation(){
 					@endif
 					@endforeach
 				</select>
+				<small>(Select 'None' to add a new organisation.)</small>
+			</div>
+		</div>
+		<div class="form-group hidden new-company-div">
+			{{Form::label('new_company' , 'Add an organisation' , array('class' => 'control-label col-md-3', "style" => "color:#337AB7;"))}}
+			<div class="col-md-4">
+				<input type="text" class="new_company form-control" name="new_company">
 			</div>
 		</div>
 		<div class="form-group">
@@ -202,6 +209,12 @@ function fillLocation(){
 					@endif
 					@endforeach
 				</select>
+			</div>
+		</div>
+		<div class="form-group new-domain-div">
+			{{Form::label('new_domain' , 'Add a domain' , array('class' => 'control-label col-md-3', "style" => "color:#337AB7;"))}}
+			<div class="col-md-4">
+				<input type="text" class="new_domain form-control" name="new_domain">
 			</div>
 		</div>
 		<hr>

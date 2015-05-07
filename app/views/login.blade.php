@@ -1,59 +1,132 @@
 @extends('layouts.boilerplate')
 
-
-
 @section('title')
-<title>Login Page</title>
-@stop
-
-
+<title>Login</title>
+<?php
+$session = Session::all();
+?>
+@if(isset($session['_old_input']))
+<script>
+$(document).ready(function(){
+	$(".login-form").addClass("hidden");
+	$(".login-forgot-password").addClass("hidden");
+	$(".login-register-form").removeClass("hidden").addClass("animated fadeIn");
+});
+</script>
+@endif
+@if(isset($session['data']))
+<script>
+$(document).ready(function(){
+	$(".login-form").removeClass("fadeInLeft").addClass("fadeIn");
+	$(".login-forgot-password").removeClass("animated");
+	$("#login-email-input").val("{{$session['data']['email']}}")
+});
+</script>
+@endif
+@if(isset($session['verify']))
+<script>
+$(document).ready(function(){
+	$(".login-form").removeClass("animated");
+	$("#login-email-input").val("{{$session['verify']['email']}}")
+});
+</script>
+@endif
+@if(isset($session['success']))
+<script>
+$(document).ready(function(){
+	$(".login-form").addClass("hidden");
+	$(".login-register-form").addClass("hidden");
+	$(".login-forgot-password").addClass("hidden");
+	$(".login-success-div").removeClass("hidden").addClass("animated fadeIn")
+});
+</script>
+@endif
+@overwrite
 
 @section('body')
-<div class="container">
-	<div class="jumbotron">
-		<div class="bmsit" style="align:center;">
-			<div class="bmsit-alt" style="width:200px;margin-left:auto;margin-right:auto;">
-		{{ HTML::image('img/bmsit.png', 'BMSIT-picture', array( 'width' => '200px')) }}
-			</div>
+<div class="container-fluid" style="padding:0;">
+	<div class="col-md-6 login-logo-div">
+		<div class="login-logo">
+			{{ HTML::image('img/bmsit.png', 'BMSIT-logo', array( 'width' => '250px')) }}
 		</div>
-		<h1 class="text-center">Reconnect</h1>
 	</div>
-	<div class="row"  id="login-form">
-		{{Form::open(array('action' => 'HomeController@attemptLogin',
-		'class' => 'text-center form-inline', 
-		'method' => 'post'))}}
-		<div class="form-group">
-			<input class="form-control" type="email" name="email" placeholder="Email">
+	<div class="col-md-6 login-form-div">
+		<div class="login-form animated fadeInLeft">
+
+			{{Form::open(array('action' => 'HomeController@attemptLogin', 'method' => 'post'))}}
+
+			<input class="login-form-input"type="email" name="email" placeholder="Email" id="login-email-input"><br>
+			<span class="login-error-text">
+				@if(isset($session['verify']))
+				{{'The email address is not verified yet.'}}
+				@endif
+			</span><br>
+
+			<input class="login-form-input"type="password" name="password" placeholder="Password"><br>
+			<span class="login-error-text">
+				@if(isset($session['data']))
+				{{'The credentials don\'t match.'}}
+				@endif
+			</span><br>
+
+			<input class="login-form-button"type="submit" value="Login">
+
+			<input class="login-form-button"type="button" value="Register" id="register-init">
+
+			{{Form::close()}}
 		</div>
-		<div class="form-group">
-			<input class="form-control"type="password" name="password" placeholder="Password">
+		<a href="#" class="login-forgot-password animated fadeIn">
+			<small>Forgot Password?</small>
+		</a>
+		<div class="login-register-form hidden">
+			{{Form::open(array('action' => 'UsersController@store','method' => 'post'))}}
+
+			<input type="text" value="{{Input::old('fname', '')}}" name="fname"  class="login-form-input" placeholder="First Name" id="login-fname-input"><br>
+			<span class="login-error-text">
+				<?php 
+				$fname = $errors->first('fname');
+				?>
+				@if($fname!=NULL)
+				{{'The first name field is required'}}
+				@endif
+			</span><br>
+
+			<input type="text" value="{{Input::old('lname', '')}}" name="lname"  class="login-form-input" placeholder="Last Name"><br>
+			<span class="login-error-text">
+				<?php 
+				$lname = $errors->first('lname');
+				?>
+				@if($lname!=NULL)
+				{{'The last name field is required'}}
+				@endif
+			</span><br>
+
+			<input type="email" value="{{Input::old('email', '')}}" name="email"  class="login-form-input" placeholder="Email"><br>
+			<span class="login-error-text">{{$errors->first('email')}}</span><br>
+
+			<input type="password" name="password"  class="login-form-input" placeholder="Password"><br>
+			<span class="login-error-text">{{$errors->first('password')}}</span><br>
+
+			<input type="password" name="confirm" class="login-form-input" placeholder="Confirm Password"><br>
+			<span class="login-error-text">
+				<?php 
+				$confirm = $errors->first('confirm');
+				?>
+				@if($confirm!=NULL)
+				{{'Both of the password fields should match'}}
+				@endif
+			</span><br>
+
+			<input type="submit" class="login-form-button" value="Register" style="width:300px;">
+
+			{{Form::close()}}
 		</div>
-		<input class="btn btn-primary"type="submit" value="Login">
-		<a id="new-btn" class ="btn btn-default" href="#">Register</a>
-	{{Form::close()}}
-</div>
-<div id="register-form" class="col-md-6 col-md-offset-3 hide">
-	{{Form::open(array('action' => 'UsersController@store',
-		'method' => 'post'))}}
-		<div class="form-group">
-			<input type="text" class="form-control register-text-fname" name="fname" placeholder="First Name">
+		<div class="login-success-div hidden">
+			<p>A verification link has been sent to the specified email address.</p>
 		</div>
-		<div class="form-group">
-			<input type="text" class="form-control register-text-lname" name="lname" placeholder="Last Name">
-		</div>
-		<div class="form-group">
-			<input type="email" class="form-control register-text-email" name="email" placeholder="Email">
-		</div>
-		<div class="form-group">
-			<input type="password" class="form-control register-text-pass" name="password" placeholder="Password">
-		</div>
-		<div class="form-group">
-			<input type="password" class="form-control register-text-confirm" name="confirm" placeholder="Confirm Password">
-		</div>
-		<div class="form-group">
-			<input type="submit" value="Register" id="reg-btn" class="btn btn-primary">		
-		</div>
-		{{Form::close()}}
+	</div>
+	<div class="login-title-div">
+		<a href="{{URL::route('home.login')}}" style="text-decoration:none;"><h1><span id="login-reco">Reco<span><span id="login-nect">nnect</span></h1></a>
 	</div>
 </div>
-@stop
+@overwrite

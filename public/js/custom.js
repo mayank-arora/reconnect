@@ -4,16 +4,20 @@ Login Form
 ------------------
 */
 $(document).ready(function(){
-	$("#new-btn").on("click", function(){
-		$("#login-form").addClass("hide");
-		$("#register-form").removeClass("hide");
+	var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+	$(".login-form").one(animationEnd, function(){
+		$("#login-email-input").focus();	
 	});
-	$("#reg-btn").on("click", function(){
-		if($(".register-text-fname").val()==/ +/ || $(".register-text-lname").val()==/ +/ || 
-			$(".register-text-email").val()==/ +/ || $(".register-text-pass").val()==/ +/ ||
-			$(".register-text-confirm").val()==/ +/ ){
-			alert("hi");
-		}
+	$("#register-init").on("click", function(){
+		$(".login-form").addClass("fadeOutLeft").removeClass("fadeInLeft");
+		$(".login-form").one(animationEnd, function(){
+			$(".login-form").addClass("hidden");
+			$(".login-register-form").removeClass("hidden").addClass("animated fadeInLeft");
+			$(".login-register-form").one(animationEnd, function(){
+				$("#login-fname-input").focus();
+			});
+		});
+		$(".login-forgot-password").addClass("animated fadeOut")
 	});
 });
 
@@ -89,20 +93,62 @@ $(document).ready(function(){
 	});
 	$(".profile-view-more").on("click", function(){
 		$(".detail-hobbies").removeClass("hide");
+		$(".detail-designation").removeClass("hide");
+		$(".detail-company").removeClass("hide");
 		$(".detail-profession").removeClass("hide");
 		$(".detail-domain").removeClass("hide");
 		$(".detail-fb_link").removeClass("hide");
 		$(".detail-linkedin_link").removeClass("hide");
 		$(".detail-view").addClass("hide");
 	});
+	$("#award-add-btn").on("click", function(){
+		$("#award-add-btn").addClass("hidden");
+		$("#award-add-form").removeClass("hidden");
+	})
+	$("#role-add-btn").on("click", function(){
+		$("#role-add-btn").addClass("hidden");
+		$("#role-add-form").removeClass("hidden");
+	})
+	$("#achieve-add-btn").on("click", function(){
+		$("#achieve-add-btn").addClass("hidden");
+		$("#achieve-add-form").removeClass("hidden");
+	})
+	$("#study-add-btn").on("click", function(){
+		$("#study-add-btn").addClass("hidden");
+		$("#study-add-form").removeClass("hidden");
+	})
+	$("#csr-add-btn").on("click", function(){
+		$("#csr-add-btn").addClass("hidden");
+		$("#csr-add-form").removeClass("hidden");
+	})
 });
 
 /* Edit Profile */
 
 $(document).ready(function(){
+	$("#batch").on("change", function(){
+		var branch_val = $("#batch").val();
+		if (branch_val == 20) {
+			$("#form-degree").addClass("hidden");
+			$("#form-branch").addClass("hidden");
+		}
+		else{
+			$("#form-degree").removeClass("hidden");
+			$("#form-branch").removeClass("hidden");
+		};
+	});
+	$("#company").on("change", function(){
+		var company_val = $("#company").val();
+		if (company_val == 6) {
+			$(".new-company-div").removeClass("hidden");
+		}
+		else{
+			$(".new-company-div").addClass("hidden");
+		};
+	});
 	$('.selectpicker').selectpicker({
-      size: 6
-  });
+		size: 6
+	});
 });
 
 

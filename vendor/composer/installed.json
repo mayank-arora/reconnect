@@ -492,65 +492,6 @@
         ]
     },
     {
-        "name": "patchwork/utf8",
-        "version": "v1.2.1",
-        "version_normalized": "1.2.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/tchwork/utf8.git",
-            "reference": "01f0ed1628db7794e2d4e336f55a09daef4248a5"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/tchwork/utf8/zipball/01f0ed1628db7794e2d4e336f55a09daef4248a5",
-            "reference": "01f0ed1628db7794e2d4e336f55a09daef4248a5",
-            "shasum": ""
-        },
-        "require": {
-            "lib-pcre": ">=7.3",
-            "php": ">=5.3.0"
-        },
-        "suggest": {
-            "ext-iconv": "Use iconv for best performance",
-            "ext-intl": "Use Intl for best performance",
-            "ext-mbstring": "Use Mbstring for best performance",
-            "ext-wfio": "Use WFIO for UTF-8 filesystem access on Windows"
-        },
-        "time": "2015-01-29 08:36:50",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Patchwork": "class/",
-                "Normalizer": "class/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "(Apache-2.0 or GPL-2.0)"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
-            }
-        ],
-        "description": "Portable and performant UTF-8, Unicode and Grapheme Clusters for PHP",
-        "homepage": "https://github.com/tchwork/utf8",
-        "keywords": [
-            "grapheme",
-            "i18n",
-            "unicode",
-            "utf-8",
-            "utf8"
-        ]
-    },
-    {
         "name": "phpseclib/phpseclib",
         "version": "0.3.10",
         "version_normalized": "0.3.10.0",
@@ -711,12 +652,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/fzaninotto/Faker.git",
-            "reference": "901bde792eddf6907f33634ff8aafb2dfddd4784"
+            "reference": "1dc7404280b32ee661ea65606efcf792be6fc4ca"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/901bde792eddf6907f33634ff8aafb2dfddd4784",
-            "reference": "901bde792eddf6907f33634ff8aafb2dfddd4784",
+            "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/1dc7404280b32ee661ea65606efcf792be6fc4ca",
+            "reference": "1dc7404280b32ee661ea65606efcf792be6fc4ca",
             "shasum": ""
         },
         "require": {
@@ -729,7 +670,7 @@
         "suggest": {
             "ext-intl": "*"
         },
-        "time": "2015-04-14 13:37:56",
+        "time": "2015-04-27 20:30:06",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1857,18 +1798,253 @@
         ]
     },
     {
+        "name": "patchwork/utf8",
+        "version": "v1.2.2",
+        "version_normalized": "1.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/tchwork/utf8.git",
+            "reference": "7287a6fb2c46a66ac6bfbaf0e4975229b27efcba"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/tchwork/utf8/zipball/7287a6fb2c46a66ac6bfbaf0e4975229b27efcba",
+            "reference": "7287a6fb2c46a66ac6bfbaf0e4975229b27efcba",
+            "shasum": ""
+        },
+        "require": {
+            "lib-pcre": ">=7.3",
+            "php": ">=5.3.0"
+        },
+        "suggest": {
+            "ext-iconv": "Use iconv for best performance",
+            "ext-intl": "Use Intl for best performance",
+            "ext-mbstring": "Use Mbstring for best performance",
+            "ext-wfio": "Use WFIO for UTF-8 filesystem access on Windows"
+        },
+        "time": "2015-04-26 09:51:43",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Patchwork": "class/",
+                "Normalizer": "class/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "(Apache-2.0 or GPL-2.0)"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
+            }
+        ],
+        "description": "Portable and performant UTF-8, Unicode and Grapheme Clusters for PHP",
+        "homepage": "https://github.com/tchwork/utf8",
+        "keywords": [
+            "grapheme",
+            "i18n",
+            "unicode",
+            "utf-8",
+            "utf8"
+        ]
+    },
+    {
+        "name": "symfony/var-dumper",
+        "version": "v2.6.6",
+        "version_normalized": "2.6.6.0",
+        "target-dir": "Symfony/Component/VarDumper",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/var-dumper.git",
+            "reference": "aafae00236e147568832de3c65ccb94cfc836278"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/var-dumper/zipball/aafae00236e147568832de3c65ccb94cfc836278",
+            "reference": "aafae00236e147568832de3c65ccb94cfc836278",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "symfony/phpunit-bridge": "~2.7"
+        },
+        "suggest": {
+            "ext-symfony_debug": ""
+        },
+        "time": "2015-03-31 08:12:29",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.6-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "Resources/functions/dump.php"
+            ],
+            "psr-0": {
+                "Symfony\\Component\\VarDumper\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            },
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
+            }
+        ],
+        "description": "Symfony mechanism for exploring and dumping PHP variables",
+        "homepage": "http://symfony.com",
+        "keywords": [
+            "debug",
+            "dump"
+        ]
+    },
+    {
+        "name": "maximebf/debugbar",
+        "version": "v1.10.4",
+        "version_normalized": "1.10.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/maximebf/php-debugbar.git",
+            "reference": "7b2006e6e095126b5a061ec33fca3d90ea8a8219"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/7b2006e6e095126b5a061ec33fca3d90ea8a8219",
+            "reference": "7b2006e6e095126b5a061ec33fca3d90ea8a8219",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0",
+            "psr/log": "~1.0",
+            "symfony/var-dumper": "~2.6"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0"
+        },
+        "suggest": {
+            "kriswallsmith/assetic": "The best way to manage assets",
+            "monolog/monolog": "Log using Monolog",
+            "predis/predis": "Redis storage"
+        },
+        "time": "2015-02-05 07:51:20",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.10-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "DebugBar": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Maxime Bouroumeau-Fuseau",
+                "email": "maxime.bouroumeau@gmail.com",
+                "homepage": "http://maximebf.com"
+            }
+        ],
+        "description": "Debug bar in the browser for php application",
+        "homepage": "https://github.com/maximebf/php-debugbar",
+        "keywords": [
+            "debug"
+        ]
+    },
+    {
+        "name": "barryvdh/laravel-debugbar",
+        "version": "v1.8.7",
+        "version_normalized": "1.8.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/barryvdh/laravel-debugbar.git",
+            "reference": "d510da02fef2381c0946185bddd6271b73e60169"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/d510da02fef2381c0946185bddd6271b73e60169",
+            "reference": "d510da02fef2381c0946185bddd6271b73e60169",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "4.*",
+            "maximebf/debugbar": "~1.10.2",
+            "php": ">=5.3.0",
+            "symfony/finder": "~2.3"
+        },
+        "time": "2015-02-04 09:52:12",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-v1.x": "1.8-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Barryvdh\\Debugbar\\": "src/"
+            },
+            "files": [
+                "src/helpers.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Barry vd. Heuvel",
+                "email": "barryvdh@gmail.com"
+            }
+        ],
+        "description": "PHP Debugbar integration for Laravel",
+        "keywords": [
+            "debug",
+            "debugbar",
+            "laravel",
+            "profiler",
+            "webprofiler"
+        ]
+    },
+    {
         "name": "intervention/image",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/Intervention/image.git",
-            "reference": "0c6767c7be0e0c73df05c77ffc72eaed91ed2aed"
+            "reference": "6626d7624ac0895137a38c123943afedd0827efc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Intervention/image/zipball/0c6767c7be0e0c73df05c77ffc72eaed91ed2aed",
-            "reference": "0c6767c7be0e0c73df05c77ffc72eaed91ed2aed",
+            "url": "https://api.github.com/repos/Intervention/image/zipball/6626d7624ac0895137a38c123943afedd0827efc",
+            "reference": "6626d7624ac0895137a38c123943afedd0827efc",
             "shasum": ""
         },
         "require": {
@@ -1884,7 +2060,7 @@
             "ext-imagick": "to use Imagick based image processing.",
             "intervention/imagecache": "Caching extension for the Intervention Image library"
         },
-        "time": "2015-04-14 20:20:45",
+        "time": "2015-04-24 14:50:48",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1912,6 +2088,52 @@
             "laravel",
             "thumbnail",
             "watermark"
+        ]
+    },
+    {
+        "name": "laracasts/utilities",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laracasts/PHP-Vars-To-Js-Transformer.git",
+            "reference": "cdcee80cdbe5673f61f59df30979546e4f7fadd6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laracasts/PHP-Vars-To-Js-Transformer/zipball/cdcee80cdbe5673f61f59df30979546e4f7fadd6",
+            "reference": "cdcee80cdbe5673f61f59df30979546e4f7fadd6",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "~4.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "phpspec/phpspec": "~2.0"
+        },
+        "time": "2014-04-24 21:43:55",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Laracasts\\Utilities": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jeffrey Way",
+                "email": "jeffrey@laracasts.com"
+            }
+        ],
+        "description": "Transform your PHP to JavaScript",
+        "keywords": [
+            "javascript",
+            "laravel"
         ]
     }
 ]

@@ -1,7 +1,7 @@
 <?php
 
 class Company extends \Eloquent {
-	protected $fillable = [];
+	protected $fillable = ['name'];
 	public function users(){
 		return $this->hasMany('User');
 	}

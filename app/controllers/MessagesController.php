@@ -52,9 +52,11 @@ class MessagesController extends \BaseController {
 	public function index()
 	{
 		$user_id = Auth::id();
-		$message = Message::where('user_id', '=', $user_id)->firstOrFail();
+		$message = Message::firstOrNew(array('user_id' => $user_id));
+		// var_dump($message);
+
 		$file = App::make('MessagesController')->getOrCreateMessageFile($message);
-		
+		// var_dump($file);
 		return View::make('messages.index', compact('file', 'message'));
 	}
 

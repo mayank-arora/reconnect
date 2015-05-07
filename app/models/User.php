@@ -14,7 +14,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $guarded = array('id', 'remember_token', 'confirm');
 
 	public static $updaterules=[
-	'location_id' => 'required'];
+	'location_id' => 'required',
+	'batch_id' => 'required'
+	];
 
 	public static $rules= [
 	'email' => 'required|unique:users',

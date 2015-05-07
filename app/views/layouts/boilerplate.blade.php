@@ -7,6 +7,8 @@
 	{{HTML::style('css/custom.css')}}
 	{{HTML::style('css/bootstrap-select.min.css')}}
 
+	{{HTML::style('css/animate.css')}}
+
 	{{HTML::script('js/jq.js')}}
 	{{HTML::script('js/bootstrap-select.min.js')}}
 	{{HTML::script('js/custom.js')}}

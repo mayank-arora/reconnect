@@ -17,10 +17,5 @@
 	@include('partials._message-hud')
 	@endforeach
 
-
-
-
-
-
 </div>
 @overwrite

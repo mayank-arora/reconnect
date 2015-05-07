@@ -6,7 +6,7 @@
 <script>
 function initialize(){
 	autocomplete = new google.maps.places.Autocomplete((document.getElementById('map-autocomplete')),
-		{types:['(regions)']});
+		{types:['(cities)']});
 	google.maps.event.addListener(autocomplete, 'place changed', function(){
 		fillLcoation()
 	});

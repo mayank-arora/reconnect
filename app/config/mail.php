@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'mayank@mayank.com', 'name' => 'Mayank Arora'),
+	'from' => array('address' => 'contact@mayankarora.in', 'name' => 'Mayank Arora'),
 
 	/*
 	|--------------------------------------------------------------------------

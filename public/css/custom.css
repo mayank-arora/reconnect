@@ -19,6 +19,7 @@ a{
 	width: 100vw;
 	height: 10vh;
 	display: flex;
+	display: -webkit-flex;
 	justify-content:center;
 	align-items:center;
 	padding-left: 8px;
@@ -38,6 +39,7 @@ a{
 	background-color: #C9CFE7;
 	text-align: center;
 	display: flex;
+	display: -webkit-flex;
 	align-items: center;
 	justify-content: center;
 }
@@ -45,6 +47,7 @@ a{
 	height: 100vh;
 	background-color: #383960;
 	display: flex;
+	display: -webkit-flex;
 	align-items:center;
 	justify-content:center;
 }
@@ -242,6 +245,7 @@ a{
 	margin: 10px 0 10px 0;
 	border-radius: 3px;
 	display:flex;
+	display: -webkit-flex;
 	flex-direction:row;
 }
 .profile-data-element-year{
@@ -326,6 +330,7 @@ a{
 
 .flex{
 	display: flex;
+	display: -webkit-flex;
 	align-items:center;
 	justify-content:center;
 }
@@ -440,6 +445,7 @@ a{
 	margin-bottom: 20px;
 	margin-top: 20px;
 	display:flex;
+	display: -webkit-flex;
 	flex-direction:row-reverse;
 }
 .incoming-textbox{
@@ -462,6 +468,7 @@ a{
 }
 .time-in,.time-out{
 	display: flex;
+	display: -webkit-flex;
 	width: 100%;
 	flex-direction:row-reverse;
 }

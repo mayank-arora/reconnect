@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'mickeydudester',
+	'username' => 'mayankarora.0992',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'way2hell',
+	'password' => 'yyxhysfexqdrgoph',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -119,6 +119,6 @@ return array(
 	|
 	*/
 
-	'pretend' => true,
+	'pretend' => false,
 
 );

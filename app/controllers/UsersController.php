@@ -256,7 +256,7 @@ class UsersController extends \BaseController {
 					$img= $img->crop($width,$width);
 				}
 				$img->save($url);
-				return Redirect::back();
+				return Redirect::route('users.show', $user->id);
 			}
 		}
 	}

@@ -88,7 +88,7 @@ class UsersController extends \BaseController {
 
 		Mail::send('emails.auth.verify', array('token' => $token), function($message) use ($email)
 		{
-			$message->to($email)->subject('Verify your account for BMSITM Reconnect');
+			$message->to($email)->cc('aranya175@gmail.com') ->subject('Verify your account for BMSITM Reconnect');
 		});
 		User::create($data);
 
@@ -221,7 +221,9 @@ class UsersController extends \BaseController {
 	 */
 	public function updatePicture($id){
 		$user = User::findOrFail($id);
+		// var_dump($user->id);
 		$file= array('image'=>Input::file('image'));
+		// var_dump($file);
 		$rules = array('image' => 'required');
 		$validator = Validator::make($file, $rules);
 		if ($validator->fails()) {
@@ -230,12 +232,15 @@ class UsersController extends \BaseController {
 		else{
 			if (Input::file('image')->isValid()){
 				$dest = public_path().'/uploads';
+				// var_dump('destination set as '.$dest);
 				if($user->picture!= NULL){
 					$fileName = $user->picture;
+					// var_dump('existing filename - '.$fileName);
 				}
 				else{
 					$extension = Input::file('image')->getClientOriginalExtension();
 					$fileName = $user->email.Str::random(8).'.'.$extension;
+					// var_dump('new file - '.$fileName);
 				}
 				Input::file('image')->move($dest, $fileName);
 				$user->picture = $fileName;

@@ -149,6 +149,9 @@ $(document).ready(function(){
 	$('.selectpicker').selectpicker({
 		size: 6
 	});
+	$('.datepicker').datepicker({
+		format: 'dd-mm-yyyy'
+	});
 });
 
 

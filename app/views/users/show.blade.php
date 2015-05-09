@@ -169,7 +169,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						{{Form::label('description' , 'Description' , array('class' => 'control-label col-md-2'))}}
+						{{Form::label('description' , 'Title' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-10">
 							{{Form::textarea('description' , null, array('class' => 'form-control', 'style' => 'resize:none;'))}}
 						</div>
@@ -200,7 +200,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						{{Form::label('description' , 'Description' , array('class' => 'control-label col-md-2'))}}
+						{{Form::label('description' , 'Title' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-10">
 							{{Form::textarea('description' , null, array('class' => 'form-control', 'style' => 'resize:none;'))}}
 						</div>
@@ -231,7 +231,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						{{Form::label('description' , 'Description' , array('class' => 'control-label col-md-2'))}}
+						{{Form::label('description' , 'Title' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-10">
 							{{Form::textarea('description' , null, array('class' => 'form-control', 'style' => 'resize:none;'))}}
 						</div>
@@ -262,7 +262,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						{{Form::label('description' , 'Description' , array('class' => 'control-label col-md-2'))}}
+						{{Form::label('description' , 'Title' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-10">
 							{{Form::textarea('description' , null, array('class' => 'form-control', 'style' => 'resize:none;'))}}
 						</div>
@@ -293,7 +293,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						{{Form::label('description' , 'Description' , array('class' => 'control-label col-md-2'))}}
+						{{Form::label('description' , 'Title' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-10">
 							{{Form::textarea('description' , null, array('class' => 'form-control', 'style' => 'resize:none;'))}}
 						</div>

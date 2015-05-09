@@ -6,11 +6,13 @@
 	{{HTML::style('font-awesome/css/font-awesome.min.css')}}
 	{{HTML::style('css/custom.css')}}
 	{{HTML::style('css/bootstrap-select.min.css')}}
+	{{HTML::style('css/bootstrap-datepicker3.standalone.min.css')}}
 
 	{{HTML::style('css/animate.css')}}
 
 	{{HTML::script('js/jq.js')}}
 	{{HTML::script('js/bootstrap-select.min.js')}}
+	{{HTML::script('js/bootstrap-datepicker.min.js')}}
 	{{HTML::script('js/custom.js')}}
 	{{HTML::script('js/bootstrap.min.js')}}
 	<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
@@ -20,5 +22,4 @@
 <body onload="initialize()">
 	@yield('navbar')
 	@yield('body')
-</div>
 </body>

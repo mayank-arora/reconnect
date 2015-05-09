@@ -124,11 +124,8 @@ function fillLocation(){
 		<div class="form-group">
 			{{Form::label('dob' , 'Date of Birth' , array('class' => 'control-label col-md-3'))}}
 			<div class="col-md-3">
-				<div class="input-group date" id="datepicker">
-					{{Form::text('dob' , null, array('class' => 'form-control', 'placeholder' => 'YYYY-MM-DD'))}}
-					<span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+				<div class="date ">
+					{{Form::text('dob' , null, array('class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD'))}}
 				</div>
 			</div>
 		</div>

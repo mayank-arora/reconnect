@@ -29,7 +29,6 @@
 						{{$post->created_at->format('M d, Y \a\t H:i')}}
 						@endif
 					</small>
-					<a href="" class="fa fa-fw fa-cog" style="float:right;"></a>
 				</h4>
 				<p>{{$post->text_content}}</p>
 			</div>

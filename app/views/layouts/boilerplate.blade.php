@@ -10,7 +10,7 @@
 
 	{{HTML::style('css/animate.css')}}
 
-	{{HTML::script('js/jq.js')}}
+	{{HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')}}
 	{{HTML::script('js/bootstrap-select.min.js')}}
 	{{HTML::script('js/bootstrap-datepicker.min.js')}}
 	{{HTML::script('js/custom.js')}}
@@ -21,5 +21,5 @@
 </head>
 <body onload="initialize()">
 	@yield('navbar')
-	@yield('body')
+	@yield('body')	
 </body>

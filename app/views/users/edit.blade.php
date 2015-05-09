@@ -125,7 +125,7 @@ function fillLocation(){
 			{{Form::label('dob' , 'Date of Birth' , array('class' => 'control-label col-md-3'))}}
 			<div class="col-md-3">
 				<div class="date ">
-					{{Form::text('dob' , null, array('class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD'))}}
+					{{Form::text('dob' , null, array('class' => 'form-control datepicker', 'placeholder' => 'DD-MM-YYYY'))}}
 				</div>
 			</div>
 		</div>

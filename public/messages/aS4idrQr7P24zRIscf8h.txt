@@ -1,1 +1,0 @@
-[{"sender_id":"17","messages":[{"text":"Hi","way":"out","time":"2015-05-01 07:16:40"},{"text":"ksjdf","way":"out","time":"2015-05-02 12:34:01"}]},{"sender_id":"15","messages":[{"text":"Hi","way":"out","time":"2015-05-06 13:54:44"}]}]

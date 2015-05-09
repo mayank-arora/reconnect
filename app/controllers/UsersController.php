@@ -243,8 +243,6 @@ class UsersController extends \BaseController {
 					// var_dump('new file - '.$fileName);
 				}
 				Input::file('image')->move($dest, $fileName);
-				$user->picture = $fileName;
-				$user->save();
 				$url ='uploads/'.$fileName;
 				$img = Image::make($url);
 				$height = $img->height();
@@ -256,6 +254,8 @@ class UsersController extends \BaseController {
 					$img= $img->crop($width,$width);
 				}
 				$img->save($url);
+				$user->picture = $fileName;
+				$user->save();
 				return Redirect::route('users.show', $user->id);
 			}
 		}

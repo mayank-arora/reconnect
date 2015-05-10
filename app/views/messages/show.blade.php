@@ -5,6 +5,34 @@ use Carbon\Carbon;
 
 @section('title')
 <title>Messages</title>
+<style>
+	#terms-container {
+   min-height:100%;
+   position:relative;
+}
+#terms-body {
+   padding:10px;
+   padding-bottom:50px;   /* Height of the footer */
+}
+#terms-footer {/*
+	padding-top: 25px;
+	padding-bottom: 25px;*/
+   position:absolute;
+   bottom:0;
+   right: 20px;
+   width:100%;
+   height:50px;
+}
+.terms-text{
+	font-size: 12px;
+	margin: 0;
+	text-align: center;
+}
+.license-text{
+	font-size: 12px;
+	text-align: center;
+}
+</style>
 <script>
 if (!document.location.hash){
 	document.location.hash = 'footer';

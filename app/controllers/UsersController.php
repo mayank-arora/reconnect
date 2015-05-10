@@ -109,7 +109,7 @@ class UsersController extends \BaseController {
 
 		Mail::send('emails.auth.reminder', array('token' => $token, 'fname' => $fname, 'lname' => $lname), function($message) use ($email)
 		{
-			$message->to($email)->subject('Verify your account for BMSITM Reconnect');
+			$message->to($email)->subject('Reset password for your BMSITM Reconnect account');
 		});
 
 		return Redirect::route('home.login')->with('success', Input::all());

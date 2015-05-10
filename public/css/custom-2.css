@@ -1,6 +1,35 @@
-body{
+html,body{
 	background-color: #F2F2F2;
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
+/*--------------------------
+--------Copyright Footer----
+--------------------------*/
+#terms-container {
+   min-height:100%;
+   position:relative;
+}
+#terms-body {
+   padding:10px;
+   padding-bottom:80px;   /* Height of the footer */
+}
+#terms-footer {
+	padding-top: 25px;
+	padding-bottom: 25px;
+   position:absolute;
+   bottom:0;
+   right: 20px;
+   width:100%;
+   height:80px;
+}
+.terms-text{
+	font-size: 12px;
+	text-align: center;
+}
+
+/*General*/
 a{
 	outline: none!important;
 }
@@ -9,6 +38,14 @@ a{
 }
 .navbar{
 	border-radius: 0;
+}
+.terms{
+    position:relative;
+    bottom:0;
+    right:0;
+    width:100%;
+    background:#eee;
+    border:1px solid #ddd;
 }
 
 /*--------------------------------

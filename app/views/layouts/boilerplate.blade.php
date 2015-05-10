@@ -20,6 +20,19 @@
 	@yield('title')
 </head>
 <body onload="initialize()">
-	@yield('navbar')
-	@yield('body')	
+	<div id="terms-container">
+		<div id="terms-header">
+			@yield('navbar')
+
+		</div>
+		<div id="terms-body">
+			@yield('body')	
+		</div>
+		<div id="terms-footer">
+		<p class="terms-text">&copy; Reconnect 2015, <a href="http://mayankarora.in">Mayank Arora</a></p>
+		<p class="terms-text">
+			This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC Attribution 4.0 License</a>.
+		</p>
+		</div>
+	</div>
 </body>

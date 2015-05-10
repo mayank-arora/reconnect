@@ -30,7 +30,7 @@
 		</div>
 		<div id="terms-footer">
 		<p class="terms-text">&copy; Reconnect 2015, <a href="http://mayankarora.in">Mayank Arora</a></p>
-		<p class="terms-text">
+		<p class="license-text">
 			This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC Attribution 4.0 License</a>.
 		</p>
 		</div>

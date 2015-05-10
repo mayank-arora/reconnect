@@ -26,6 +26,11 @@ html,body{
 }
 .terms-text{
 	font-size: 12px;
+	margin: 0;
+	text-align: center;
+}
+.license-text{
+	font-size: 12px;
 	text-align: center;
 }
 

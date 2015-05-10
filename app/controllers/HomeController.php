@@ -40,6 +40,10 @@ class HomeController extends BaseController {
 		Auth::logout();
 		return Redirect::route('home.login');
 	}
+	public function showFeedback()
+	{
+		return View::make('feedback');
+	}
 	public function showHome()
 	{
 		$user = Auth::user();

@@ -24,8 +24,8 @@
 					</button>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="profile-dropdown">
 						<li role="presentation">{{HTML::linkRoute('users.show' , 'Profile' , array(Auth::id()),array('role' => 'menuitem' , 'tabindex' => '-1'))}}</li>
-						<li role="presentation"><a href="{{URL::to('message')}}" role="menuitem" tabindex="-1">Messages <span class="badge">4</span></a></li>
-						<li role="presentation"><a href="{{URL::route('message.show', 1)}}" role="menuitem" tabindex="-1">Feedback</a></li>
+						<li role="presentation"><a href="{{URL::to('message')}}" role="menuitem" tabindex="-1">Messages <span class="badge"></span></a></li>
+						<li role="presentation"><a href="{{URL::route('feedback')}}" role="menuitem" tabindex="-1">Feedback</a></li>
 						<li role="presentation"><a href="{{URL::to('logout')}}" role="menuitem" tabindex="-1">Logout</a></li>
 					</ul>
 				</div>

@@ -48,6 +48,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('jobs/location/{id}', array('uses' => 'JobsController@locationJob', 'as' => 'location.jobs'));
 	Route::resource('jobs', 'JobsController');
 	
+	Route::get('feedback', array('uses' => 'HomeController@showFeedback', 'as' => 'feedback'));
 	Route::get('home', array('uses' => 'HomeController@showHome', 'as' => 'home'));
 	Route::get('search', array('uses' => 'HomeController@showSearch', 'as' => 'search'));
 	Route::get('discussion', array('uses' => 'HomeController@showDiscussion', 'as' => 'discussion'));

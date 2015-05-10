@@ -1,11 +1,26 @@
-@extends('layouts.boilerplate')
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	{{HTML::style('css/bootstrap.min.css')}}
+	{{HTML::style('font-awesome/css/font-awesome.min.css')}}
+	{{HTML::style('css/custom-2.css')}}
+	{{HTML::style('css/bootstrap-select.min.css')}}
+	{{HTML::style('css/bootstrap-datepicker3.standalone.min.css')}}
 
-@section('title')
-<title>Set New Password</title>
-@overwrite
+	{{HTML::style('css/animate.css')}}
 
-@section('body')
-<div class="container-fluid" style="padding:0;">
+	{{HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')}}
+	{{HTML::script('js/bootstrap-select.min.js')}}
+	{{HTML::script('js/bootstrap-datepicker.min.js')}}
+	{{HTML::script('js/custom.js')}}
+	{{HTML::script('js/bootstrap.min.js')}}
+	<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+	<link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+	<title>Set New Password</title>
+</head>
+<body onload="initialize()">
+	<div class="container-fluid" style="padding:0;">
 	<div class="col-md-6 login-logo-div">
 		<div class="login-logo">
 			{{ HTML::image('img/bmsit.png', 'BMSIT-logo', array( 'width' => '250px')) }}
@@ -33,4 +48,4 @@
 		<a href="{{URL::route('home.login')}}" style="text-decoration:none;"><h1><span id="login-reco">Reco<span><span id="login-nect">nnect</span></h1></a>
 	</div>
 </div>
-@overwrite
+</body>

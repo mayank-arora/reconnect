@@ -3,14 +3,13 @@
 		<div class="row">
 			<div class="col-md-2 profile-pic">
 				@if($post->user->picture == NULL)
-					{{ HTML::image('img/dp.png', 'profile-picture', array('class' => 'thumbnail' , 'width' => '100px')) }}
-					@else
-					{{ HTML::image('uploads/'.$post->user->picture, 'profile-picture', array('class' => 'thumbnail' , 'width' => '100px')) }}
-					@endif
+				{{ HTML::image('img/dp.png', 'profile-picture', array('class' => 'thumbnail' , 'width' => '100px')) }}
+				@else
+				{{ HTML::image('uploads/'.$post->user->picture, 'profile-picture', array('class' => 'thumbnail' , 'width' => '100px')) }}
+				@endif
 			</div>
 			<div class="col-md-10">
 				<h4 class="text-primary"><a href="{{URL::route('users.show' , $post->user->id)}}">{{$post->user->fname}} {{$post->user->lname}}</a>
-					
 					{{HTML::linkAction('PostsController@show',' ',array($post->id) , 
 					array('class' => 'fa fa-fw fa-arrow-right' , 'style' => 'float:right;margin-left:15px;'))}}
 					<small class="post_time">
@@ -34,12 +33,28 @@
 			</div>
 		</div>
 		<hr>
-		@foreach($post->comments as $comment)
-		<blockquote>
-			<p class="comment-head"><a href="{{URL::route('users.show' , $comment->user->id)}}">{{$comment->user->fname}} {{$comment->user->lname}}</a></p>
-			<p class="comment-text">{{$comment->text_content}} </p>
-		</blockquote>
-		@endforeach
+		
+		{{-- Deciding whether to show all the comments or not based on comments count and the activated route --}}
+		@if($post->comments->count() > 2 && Route::currentRouteName() == 'home')
+			@foreach($post->comments as $key=>$comment)
+				@if($key == 0 || $key == 1)
+				<blockquote>
+					<p class="comment-head"><a href="{{URL::route('users.show' , $comment->user->id)}}">{{$comment->user->fname}} {{$comment->user->lname}}</a></p>
+					<p class="comment-text">{{$comment->text_content}} </p>
+				</blockquote>
+				@endif
+			@endforeach
+			<a href="{{URL::route('posts.show', $post->id)}}">View more comments</a>
+			<div class="gap"></div>
+		@else
+			@foreach($post->comments as $comment)
+			<blockquote>
+				<p class="comment-head"><a href="{{URL::route('users.show' , $comment->user->id)}}">{{$comment->user->fname}} {{$comment->user->lname}}</a></p>
+				<p class="comment-text">{{$comment->text_content}} </p>
+			</blockquote>
+			@endforeach
+		@endif
+
 		{{Form::open(array('action' => 'CommentsController@store'))}}
 		<div class="form-group">
 			<input type="text" name="text_content" class="form-control">

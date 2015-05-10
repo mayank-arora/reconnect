@@ -17,6 +17,10 @@ Route::post('login', array('uses' => 'HomeController@attemptLogin', 'as' => 'use
 Route::get('logout', array('uses' => 'HomeController@logout', 'as' => 'users.logout'));
 Route::post('users', array('uses' => 'UsersController@store', 'as' => 'users.store'));
 Route::get('users/verify/{token}', array('uses' => 'UsersController@verify', 'as' => 'users.verify'));
+Route::get('password/reset/{token}', array('uses' => 'UsersController@getForgottenUser', 'as' => 'users.password.new'));
+Route::post('password/new/{id}', array('uses' => 'UsersController@setNewPassword', 'as' => 'users.password.set'));
+Route::post('sendlink', array('uses' => 'UsersController@sendVerificationLink', 'as' => 'users.sendlink'));
+Route::post('resetpassword', array('uses' => 'UsersController@resetPassword', 'as' => 'users.password.reset'));
 
 
 Route::group(array('before' => 'auth'), function(){

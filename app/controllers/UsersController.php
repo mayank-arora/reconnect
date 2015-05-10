@@ -65,34 +65,86 @@ class UsersController extends \BaseController {
 		return $megaArr;
 	}
 
-	/**
-	 * Store a newly created user in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+	public function sendVerificationLink()
 	{
-		$data = Input::all();
-		$validator = Validator::make($data, User::$rules);
+		$email = Input::get('email');
+		$rules = ['email' => 'required|exists:users'];
+		$validator = Validator::make(Input::all(), $rules);
 
 		if ($validator->fails())
 		{
-			return Redirect::back()->withErrors($validator)->withInput();
+			return Redirect::back()->with('noVerifyEmail', Input::all());
 		}
-		$data['password'] = Hash::make($data['password']);
-		$data['status'] = 0;
-		$data['token'] = Str::random(50);
-		$email = $data['email'];
-		$token = $data['token'];
-		$data['profile_data'] = App::make('UsersController')->createNewProfileData();
-
+		// var_dump($email);
+		$user = User::where('email', '=', $email)->first();
+		// var_dump($user->fname);
+		$token = $user->token;
+		// var_dump($token);
 		Mail::send('emails.auth.verify', array('token' => $token), function($message) use ($email)
 		{
-			$message->to($email)->cc('aranya175@gmail.com') ->subject('Verify your account for BMSITM Reconnect');
+			$message->to($email)->subject('Verify your account for BMSITM Reconnect');
 		});
-		User::create($data);
 
 		return Redirect::route('home.login')->with('success', Input::all());
+
+	}
+	public function resetPassword()
+	{
+		$email = Input::get('email');
+		$rules = ['email' => 'required|exists:users'];
+		$validator = Validator::make(Input::all(), $rules);
+
+		if ($validator->fails())
+		{
+			return Redirect::back()->with('noForgotEmail', Input::all());
+		}
+		// var_dump($email);
+		$user = User::where('email', '=', $email)->first();
+		// var_dump($user->fname);
+		$token = Str::random(50);
+		$fname = $user->fname;
+		$lname = $user->lname;
+		$user->resetToken = $token;
+		$user->save();
+
+		Mail::send('emails.auth.reminder', array('token' => $token, 'fname' => $fname, 'lname' => $lname), function($message) use ($email)
+		{
+			$message->to($email)->subject('Verify your account for BMSITM Reconnect');
+		});
+
+		return Redirect::route('home.login')->with('success', Input::all());
+	}
+	public function getForgottenUser($token)
+	{
+		$user = User::where('resetToken', '=', $token)->first();
+		$id = $user->id;
+		if(!$user){
+			return Redirect::route('home.login');
+		}
+		else{
+			return View::make('newpassword',compact('id'));
+		}
+	}
+
+	public function setNewPassword($id)
+	{
+		$rules = ['password' => 'required', 'confirm' => 'required|same:password'];
+		$validator = Validator::make(Input::all(), $rules);
+
+		if ($validator->fails())
+		{
+			return Redirect::back()->with('invalid', Input::all());
+		}
+		$user = User::find($id);
+		// var_dump($user->fname);
+		$data = Input::all();
+		// var_dump($data);
+		$password = Hash::make($data['password']);
+		$user->password = $password;
+		$user->resetToken = null;
+		$user->save();
+		return Redirect::route('home.login');
+
 	}
 
 	/**
@@ -113,6 +165,37 @@ class UsersController extends \BaseController {
 			$user->save();
 			return Redirect::route('home.login');
 		}
+	}
+
+	/**
+	 * Store a newly created user in storage.
+	 *
+	 * @return Response
+	 */
+	public function store()
+	{
+		$data = Input::all();
+		$validator = Validator::make($data, User::$rules);
+
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+		$data['password'] = Hash::make($data['password']);
+		$data['status'] = 0;
+		$data['token'] = Str::random(50);
+		$data['profile_data'] = App::make('UsersController')->createNewProfileData();
+
+		$email = $data['email'];
+		$token = $data['token'];
+		Mail::send('emails.auth.verify', array('token' => $token), function($message) use ($email)
+		{
+			$message->to($email)->cc('aranya175@gmail.com') ->subject('Verify your account for BMSITM Reconnect');
+		});
+		
+		User::create($data);
+
+		return Redirect::route('home.login')->with('success', Input::all());
 	}
 
 	/**
@@ -224,7 +307,7 @@ class UsersController extends \BaseController {
 		// var_dump($user->id);
 		$file= array('image'=>Input::file('image'));
 		// var_dump($file);
-		$rules = array('image' => 'required');
+		$rules = array('image' => 'required|image');
 		$validator = Validator::make($file, $rules);
 		if ($validator->fails()) {
 			return Redirect::back()->withInput()->withErrors($validator);
@@ -298,7 +381,7 @@ class UsersController extends \BaseController {
 	public function batchUser($id)
 	{
 		$batch = Batch::findOrFail($id);
-		return View::make('users.batch', compact('batch'));
+		return View::make('users.batch', compact('batch', 'id'));
 	}
 
 	/**

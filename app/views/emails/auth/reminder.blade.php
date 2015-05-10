@@ -4,11 +4,10 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<h2>Password Reset for {{$id}}</h2>
+		<h2>Password Reset for {{$fname}} {{$lname}}</h2>
 
 		<div>
-			To reset your password, complete this form: {{ URL::route('users.show', array($id)) }}.<br/>
-			This link will expire in {{ Config::get('auth.reminder.expire', 60) }} minutes.
+			To reset your password, complete this <a href="{{URL::route('users.password.new', $token)}}">form</a>.<br/>
 		</div>
 	</body>
 </html>

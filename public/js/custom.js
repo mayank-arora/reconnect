@@ -19,6 +19,30 @@ $(document).ready(function(){
 		});
 		$(".login-forgot-password").addClass("animated fadeOut")
 	});
+	$(".login-forgot-password").on("click", function(){
+		$(".login-forgot-password").addClass("fadeOut").removeClass("fadeIn");
+		$(".login-form").addClass("fadeOutLeft").removeClass("fadeInLeft");
+		$(".login-form").one(animationEnd, function(){
+			$(".login-form").addClass("hidden");
+			$(".login-forgot-password").addClass("hidden");
+			$(".login-forgot-form").removeClass("hidden").addClass("animated fadeInLeft");
+			$(".login-forgot-form").one(animationEnd, function(){
+				$("#forgot-form-email").focus();
+			});
+		});
+	});
+	$(".login-send-again").on("click", function(){
+		// $(".login-send-again").addClass("fadeOut").removeClass("fadeIn");
+		$(".login-form").addClass("fadeOutLeft").removeClass("fadeInLeft");
+		$(".login-form").one(animationEnd, function(){
+			$(".login-form").addClass("hidden");
+			$(".login-send-again").addClass("hidden");
+			$(".login-send-again-form").removeClass("hidden").addClass("animated fadeInLeft");
+			$(".login-send-again-form").one(animationEnd, function(){
+				$("#send-again-email").focus();
+			});
+		});
+	});
 });
 
 

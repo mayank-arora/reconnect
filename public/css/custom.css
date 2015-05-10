@@ -52,6 +52,14 @@ a{
 	align-items:center;
 	justify-content:center;
 }
+.new-password-form-div{
+	height: 100vh;
+	background-color: #383960;
+	display: flex;
+	display: -webkit-flex;
+	align-items:center;
+	justify-content:center;
+}
 .login-success-div{
 	text-align: center;
 	color: #fff;
@@ -125,16 +133,46 @@ a{
 	outline: none
 }
 .login-forgot-password{
+	background:none;
+	border: none;
 	position: absolute;
 	bottom:10px;
 	right:10px;
-	color: #fff;
+	color: #ccc;
+	font-size: 85%;
 }
 .login-forgot-password:hover{
 	color: #fff;
+	-webkit-transition: color 0.2s;
+	-o-transition: color 0.2s;
+	transition: color 0.2s;
 }
 .login-forgot-password:focus{
 	color: #fff;
+	-webkit-transition: color 0.2s;
+	-o-transition: color 0.2s;
+	transition: color 0.2s;
+}
+.login-send-again{
+	background:none;
+	border: none;
+	position: absolute;
+	bottom:10px;
+	right:10px;
+	color: #ccc;
+	font-size: 85%;
+}
+.login-send-again:hover{
+	color: #fff;
+	-webkit-transition: color 0.2s;
+	-o-transition: color 0.2s;
+	transition: color 0.2s;
+}
+.login-send-again:focus{
+	color: #fff;
+	-webkit-transition: color 0.2s;
+	-o-transition: color 0.2s;
+	transition: color 0.2s;
 }
 .login-error-text{
 	color: #fff;
@@ -371,7 +409,7 @@ a{
 	border-radius: 4px;
 	box-shadow: 1px 1px 2px #bbb;
 	margin: 0 15px 15px 0;
-	height: 300px;
+	/*min-height: 400px;*/
 	-webkit-transition: box-shadow .5s;
 	transition: box-shadow .5s;
 	
@@ -381,7 +419,7 @@ a{
 	border-radius: 4px;
 	box-shadow: 2px 2px 5px #bbb;
 	margin: 0 15px 15px 0;
-	height: 300px;
+	/*height: 300px;*/
 	cursor: pointer;
 
 }

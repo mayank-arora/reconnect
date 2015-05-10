@@ -5,6 +5,7 @@
 <?php
 $session = Session::all();
 ?>
+
 @if(isset($session['_old_input']))
 <script>
 $(document).ready(function(){
@@ -14,6 +15,7 @@ $(document).ready(function(){
 });
 </script>
 @endif
+
 @if(isset($session['data']))
 <script>
 $(document).ready(function(){
@@ -23,14 +25,18 @@ $(document).ready(function(){
 });
 </script>
 @endif
+
 @if(isset($session['verify']))
 <script>
 $(document).ready(function(){
 	$(".login-form").removeClass("animated");
 	$("#login-email-input").val("{{$session['verify']['email']}}")
+	$(".login-forgot-password").addClass("hidden");
+	$(".login-send-again").removeClass("hidden").addClass("animated fadeIn");
 });
 </script>
 @endif
+
 @if(isset($session['success']))
 <script>
 $(document).ready(function(){
@@ -41,6 +47,26 @@ $(document).ready(function(){
 });
 </script>
 @endif
+
+@if(isset($session['noVerifyEmail']))
+<script>
+$(document).ready(function(){
+	$(".login-form").addClass("hidden");
+	$(".login-forgot-password").addClass("hidden");
+	$(".login-send-again-form").removeClass("hidden").addClass("animated fadeIn");
+});
+</script>
+@endif
+
+@if(isset($session['noForgotEmail']))
+<script>
+$(document).ready(function(){
+	$(".login-form").addClass("hidden");
+	$(".login-forgot-form").removeClass("hidden").addClass("animated fadeIn");
+});
+</script>
+@endif
+
 @overwrite
 
 @section('body')
@@ -75,9 +101,7 @@ $(document).ready(function(){
 
 			{{Form::close()}}
 		</div>
-		<a href="#" class="login-forgot-password animated fadeIn">
-			<small>Forgot Password?</small>
-		</a>
+		
 		<div class="login-register-form hidden">
 			{{Form::open(array('action' => 'UsersController@store','method' => 'post'))}}
 
@@ -121,11 +145,39 @@ $(document).ready(function(){
 
 			{{Form::close()}}
 		</div>
+
+
+		<button class="login-forgot-password animated fadeIn">Forgot Password?</button>
+		<button class="login-send-again hidden">Send verification link?</button>
+
+
+		<div class="login-forgot-form hidden">
+			{{Form::open(array('route' => 'users.password.reset', 'method' => 'post'))}}
+			<input type="email" name="email" class="login-form-input" placeholder="Email" id="forgot-form-email"><br>
+			<span class="login-error-text">
+				@if(isset($session['noForgotEmail']))
+				{{'Enter a valid email address.'}}
+				@endif
+			</span><br>
+			<input type="submit" class="login-form-button" value="Send" style="width:300px;">
+			{{Form::close()}}
+		</div>
+		<div class="login-send-again-form hidden">
+			{{Form::open(array('route' => 'users.sendlink', 'method' => 'post'))}}
+			<input type="email" name="email" class="login-form-input" placeholder="Email" id="send-again-email"><br>
+			<span class="login-error-text">
+				@if(isset($session['noVerifyEmail']))
+				{{'Enter a valid email address.'}}
+				@endif
+			</span><br>
+			<input type="submit" class="login-form-button" value="Verify" style="width:300px;">
+			{{Form::close()}}
+		</div>
 		<div class="login-success-div hidden">
-			<p>A verification link has been sent to the specified email address.</p>
+			<p>A verification link has been sent to the given email address.</p>
 		</div>
 	</div>
-	<div class="login-title-div">
+	<div class="login-title-div hidden-xs hidden-sm">
 		<a href="{{URL::route('home.login')}}" style="text-decoration:none;"><h1><span id="login-reco">Reco<span><span id="login-nect">nnect</span></h1></a>
 	</div>
 </div>

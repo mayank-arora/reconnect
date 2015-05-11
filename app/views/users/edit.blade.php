@@ -16,6 +16,14 @@ function fillLocation(){
 	var place = autocomplete.getPlace();
 }
 </script>
+@if($user->batch_id == 0 || $user->batch_id == 20)
+{{'<script>
+$("document").ready(function(){
+$("#form-degree").addClass("hidden");
+$("#form-branch").addClass("hidden");
+});
+</script>'}}
+@endif
 @overwrite
 
 
@@ -148,6 +156,8 @@ function fillLocation(){
 				@foreach($companies as $company)
 				@if($user->company_id == $company->id)
 				{{ '<option selected value="'.$company->id.'">'.$company->name.'</option>'}}
+				@elseif($company->id == 6)
+				{{ '<option selected value="'.$company->id.'">'.$company->name.'</option>'}}
 				@else
 				{{ '<option value="'.$company->id.'">'.$company->name.'</option>'}}
 				@endif
@@ -186,6 +196,8 @@ function fillLocation(){
 			<select name="profession_id" id="profession" class="form-control selectpicker dropup" data-live-search="true">
 				@foreach($professions as $profession)
 				@if($user->profession_id == $profession->id)
+				{{'<option selected value="'.$profession->id.'">'.$profession->name.'</option>'}}
+				@elseif($profession->id == 2)
 				{{'<option selected value="'.$profession->id.'">'.$profession->name.'</option>'}}
 				@else
 				{{'<option value="'.$profession->id.'">'.$profession->name.'</option>'}}

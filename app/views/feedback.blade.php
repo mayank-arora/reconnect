@@ -75,7 +75,7 @@
 							<a href="{{URL::route('message.show',1)}}"><span class="link-setter"></span></a>
 						</div>
 						<div class="detail-tab col-md-6" style="padding-left:0;padding-right:0;">Email
-							<a href="mailto:mayankarora.0992@gmail.com"><span class="link-setter"></span></a>
+							<a href="mailto:contact@mayankarora.in"><span class="link-setter"></span></a>
 						</div>
 					</div>
 				</div>
@@ -85,7 +85,7 @@
 			<div class="col-md-6" style="padding-right:0;padding-left:0;">
 				<div class="white-container">
 					<h4 class="title-div title">Aranya Khinvasara</h4>
-					<p class="title-div">Alumni Coordinator</p>
+					<p class="title-div">Student Alumni Coordinator</p>
 					<div class="gap"></div>
 					<div class="detail-div">
 						<div class="detail-tab col-md-6" style="padding-left:0;padding-right:0;border-right:1px solid #e5e6e9">Message

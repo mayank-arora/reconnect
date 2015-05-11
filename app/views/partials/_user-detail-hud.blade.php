@@ -1,4 +1,4 @@
-	<div class="col-md-2 user-detail-hud ">
+	<div class="col-md-2 col-sm-5 user-detail-hud ">
 		<a href="{{URL::route('users.show', $user->id) }}"><span class="link-setter"></span></a>
 		@if($user->picture == NULL)
 		{{ HTML::image('img/dp.png', 'profile-picture', array('class' => 'thumbnail user-detail-display-pic' )) }}

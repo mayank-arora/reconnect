@@ -31,7 +31,7 @@ function fillLocation(){
 		@if($user->picture == NULL)
 		{{ HTML::image('img/dp.png', 'profile-picture', array('class' => 'img-thumbnail' , 'width' => '60%')) }}
 		@else
-		{{ HTML::image('uploads/'.$user->picture, 'profile-picture', array('class' => 'img-thumbnail' , 'width' => '60%')) }}
+		{{ HTML::image('uploads/'.$user->picture.'?'.Str::random(10), 'profile-picture', array('class' => 'img-thumbnail' , 'width' => '60%')) }}
 		@endif
 		<hr>
 		{{Form::open(array('route'=>array('user.updatePicture', $user->id), 'method'=>'Post' , 'files'=>true))}}

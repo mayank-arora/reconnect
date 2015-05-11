@@ -307,7 +307,7 @@ class UsersController extends \BaseController {
 				$img->save($url);
 				$user->picture = $fileName;
 				$user->save();
-				return Redirect::route('users.show', $user->id);
+				return Redirect::route('users.edit', $user->id);
 			}
 		}
 	}

@@ -18,7 +18,7 @@
 					@if($user->picture == NULL)
 					{{ HTML::image('img/dp.png', 'profile-picture', array('class' => 'thumbnail profile-display-pic' , 'width' => '100px')) }}
 					@else
-					{{ HTML::image('uploads/'.$user->picture, 'profile-picture', array('class' => 'thumbnail profile-display-pic' , 'width' => '100px')) }}
+					{{ HTML::image('uploads/'.$user->picture.'?'.Str::random(10), 'profile-picture', array('class' => 'thumbnail profile-display-pic' , 'width' => '100px')) }}
 					@endif
 					
 				</div>

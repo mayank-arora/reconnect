@@ -366,15 +366,19 @@ class UsersController extends \BaseController {
 		$data = json_decode($user->profile_data);
 		$input = Input::all();
 		// var_dump($data);
-		$validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
-		if ($validator->fails()){
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
+		// $validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
+		// if ($validator->fails()){
+		// 	return Redirect::back()->withErrors($validator)->withInput();
+		// }
 		$node = new stdClass;
 		$node->type = $input['type'];
 		$node->year = $input['year'];
 		$node->description = $input['description'];
+		// var_dump($node);
 		$data[0][] = $node;
+		// var_dump($data);
+		// $node = array($node);
+		// var_dump($node);
 		// var_dump($data);
 		$user->profile_data = json_encode($data);
 		$user->save();
@@ -393,6 +397,7 @@ class UsersController extends \BaseController {
 	public function deleteProfileData($key)
 	{
 		$user = Auth::user();
+		// var_dump($user->profile_data);
 		$data = json_decode($user->profile_data);
 		// var_dump($data);
 		// foreach($data[0] as $index => $value){
@@ -403,6 +408,8 @@ class UsersController extends \BaseController {
 		// 	}
 		// }
 		unset($data[0][$key]);
+		$data[0] =array_values($data[0]);
+		// var_dump($data);
 		// var_dump($data);
 		$user->profile_data = json_encode($data);
 		$user->save();

@@ -158,7 +158,7 @@ class UsersController extends \BaseController {
 		$token = $data['token'];
 		Mail::send('emails.auth.verify', array('token' => $token), function($message) use ($email)
 		{
-			$message->to($email)->cc('aranya175@gmail.com') ->subject('Verify your account for BMSITM Reconnect');
+			$message->to($email)->subject('Verify your account for BMSITM Reconnect');
 		});
 		
 		User::create($data);

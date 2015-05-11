@@ -11,7 +11,7 @@
 			<div class="col-md-10">
 				<h4 class="text-primary"><a href="{{URL::route('users.show' , $post->user->id)}}">{{$post->user->fname}} {{$post->user->lname}}</a>
 					{{HTML::linkAction('PostsController@show',' ',array($post->id) , 
-					array('class' => 'fa fa-fw fa-arrow-right' , 'style' => 'float:right;margin-left:15px;'))}}
+					array('class' => 'fa fa-fw fa-arrow-right' , 'style' => 'float:right;margin-left:15px;text-decoration:none;'))}}
 					<small class="post_time">
 						<?php
 						use Carbon\Carbon;

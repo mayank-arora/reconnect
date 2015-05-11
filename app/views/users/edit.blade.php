@@ -74,7 +74,7 @@ function fillLocation(){
 			</select>
 		</div>
 	</div>
-	<div class="form-group hidden" id="form-degree">
+	<div class="form-group" id="form-degree">
 		{{Form::label('degree_id' , 'Degree' , array('class' => 'control-label col-md-3'))}}
 		<div class="col-md-3">
 			<select name="degree_id" id="degree" class="form-control selectpicker">
@@ -88,7 +88,7 @@ function fillLocation(){
 			</select>
 		</div>
 	</div>
-	<div class="form-group hidden" id="form-branch">
+	<div class="form-group" id="form-branch">
 		{{Form::label('branch_id' , 'Branch' , array('class' => 'control-label col-md-3'))}}
 		<div class="col-md-6">
 			<select name="branch_id" id="branch" class="form-control selectpicker">

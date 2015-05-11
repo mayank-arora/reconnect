@@ -33,7 +33,13 @@
 							<p style="float:right;">
 								@if($user->batch_id!=NULL)
 								@if($user->batch_id!= 20)
-								{{($user->batch->value - 4).' - '.$user->batch->value}}
+									@if($user->degree_id == 4){
+									{{($user->batch->value - 3).' - '.$user->batch->value}}
+									}
+									@else{
+									{{($user->batch->value - 4).' - '.$user->batch->value}}
+									}
+									@endif
 								@else
 								{{$user->batch->value}}
 								@endif

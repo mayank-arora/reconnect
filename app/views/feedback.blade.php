@@ -8,7 +8,6 @@
 }
 .title{
 	color: #337AB7;
-	margin-top: 0;
 }
 .list-group-item{
 	border-color: #E5E6E9 #DFE0E4 #D0D1D5 !important;

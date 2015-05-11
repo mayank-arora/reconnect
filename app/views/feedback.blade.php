@@ -57,7 +57,7 @@
 	</div>
 	<div class="col-md-6">
 		<ul class="list-group">	
-			<li class="list-group-item">Additional profile data cannot be modified.</li>
+			<li class="list-group-item">No notifications of our activity or activity related to us yet.</li>
 			<li class="list-group-item">Manual validation required for every new user.</li>
 			<li class="list-group-item">Cannot hide personal information from other users.
 			</li>

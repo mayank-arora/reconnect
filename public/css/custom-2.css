@@ -319,6 +319,9 @@ a{
 	cursor: pointer;
 	color: #337AB7;
 	font-size: 30px;
+	-webkit-transition: color 0.2s;
+	-o-transition: color 0.2s;
+	transition: color 0.2s;
 }
 .profile-data-element-container{
 	min-height: 50px;
@@ -340,7 +343,17 @@ a{
 	font-size: 1.4em;
 	color: #ccc;
 	letter-spacing: 1px;
-
+}
+.profile-data-element-year-contact{
+	width: 50%;
+	min-height: 50px;
+	height: 100%;
+	padding: 10px;
+	vertical-align: center;
+	padding-left: 35px;
+	font-size: 1.4em;
+	color: #ccc;
+	letter-spacing: 1px;
 }
 .profile-data-element-description{
 	border-radius: 3px;
@@ -349,6 +362,21 @@ a{
 	margin-left: auto;
 	padding: 13px 10px 13px 10px;
 	width: 77%
+}
+.profile-data-element-edit{
+	color: #ccc;
+	padding-top: 15px;
+	cursor: pointer;
+	text-decoration: none;
+}
+.profile-data-element-edit:hover{
+	color: #337AB7;
+	padding-top: 15px;
+	cursor: pointer;
+	-webkit-transition: color 0.2s;
+	-o-transition: color 0.2s;
+	transition: color 0.2s;
+	text-decoration: none;
 }
 
 /*--------------------------------

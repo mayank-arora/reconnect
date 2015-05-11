@@ -157,11 +157,12 @@
 		</div>
 
 		<div class="col-md-7 col-md-offset-1">
-			<div class="white-container">
+			<div class="white-container award-container">
 				<h3 style="margin-bottom:30px;color:#337AB7;">Awards</h3>
 				@if($user->id == Auth::id())
-				<span class="fa fa-pencil-square-o add-btn" id="award-add-btn"></span>
-				<form action="{{URL::action('UsersController@addAward', $user->id)}}" method="post" class="form-horizontal hidden" id="award-add-form">
+				<span class="fa fa-pencil-square-o add-btn" id="data-add-btn"></span>
+				<form action="{{URL::action('UsersController@addProfileData', $user->id)}}" method="post" class="form-horizontal hidden" id="award-add-form">
+					<input type="hidden" name="type" value="award">
 					<div class="form-group">
 						{{Form::label('year' , 'Year' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-4">
@@ -171,28 +172,31 @@
 					<div class="form-group">
 						{{Form::label('description' , 'Title' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-10">
-							{{Form::textarea('description' , null, array('class' => 'form-control', 'style' => 'resize:none;'))}}
+							{{Form::textarea('description' , null, array('class' => 'form-control', 'rows' => '2', 'style' => 'resize:none;'))}}
 						</div>
 					</div>
 					<div class="form-group">
 						{{Form::label('' , '' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-4">
 							<input type="submit" class="btn btn-primary" value="Add">
+							<input type="button" class="btn btn-default" value="Cancel" id="data-cancel-btn">
 						</div>
 					</div>
-
 				</form>
 				@endif
-				@foreach($profile_data[0] as $award)
+				@foreach($profile_data[0] as $key => $data)
+				@if($data->type == 'award')
 				@include('partials._profile-data-element')
+				@endif
 				@endforeach
 			</div>
 
-			<div class="white-container">
+			<div class="white-container role-container">
 				<h3 style="margin-bottom:30px;color:#337AB7;">Roles</h3>
 				@if($user->id == Auth::id())
-				<span class="fa fa-pencil-square-o add-btn" id="role-add-btn"></span>
-				<form action="{{URL::action('UsersController@addRole', $user->id)}}" method="post" class="form-horizontal hidden" id="role-add-form">
+				<span class="fa fa-pencil-square-o add-btn" id="data-add-btn"></span>
+				<form action="{{URL::action('UsersController@addProfileData', $user->id)}}" method="post" class="form-horizontal hidden" id="role-add-form">
+					<input type="hidden" name="type" value="role">
 					<div class="form-group">
 						{{Form::label('year' , 'Year' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-4">
@@ -202,28 +206,32 @@
 					<div class="form-group">
 						{{Form::label('description' , 'Title' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-10">
-							{{Form::textarea('description' , null, array('class' => 'form-control', 'style' => 'resize:none;'))}}
+							{{Form::textarea('description' , null, array('class' => 'form-control', 'rows' => '2', 'style' => 'resize:none;'))}}
 						</div>
 					</div>
 					<div class="form-group">
 						{{Form::label('' , '' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-4">
 							<input type="submit" class="btn btn-primary" value="Add">
+							<input type="button" class="btn btn-default" value="Cancel" id="data-cancel-btn">
 						</div>
 					</div>
 
 				</form>
 				@endif
-				@foreach($profile_data[1] as $award)
+				@foreach($profile_data[0] as $key => $data)
+				@if($data->type == 'role')
 				@include('partials._profile-data-element')
+				@endif
 				@endforeach
 			</div>
 
-			<div class="white-container">
+			<div class="white-container achieve-container">
 				<h3 style="margin-bottom:30px;color:#337AB7;">Achievements</h3>
 				@if($user->id == Auth::id())
-				<span class="fa fa-pencil-square-o add-btn" id="achieve-add-btn"></span>
-				<form action="{{URL::action('UsersController@addAchievement', $user->id)}}" method="post" class="form-horizontal hidden" id="achieve-add-form">
+				<span class="fa fa-pencil-square-o add-btn" id="data-add-btn"></span>
+				<form action="{{URL::action('UsersController@addProfileData', $user->id)}}" method="post" class="form-horizontal hidden" id="achieve-add-form">
+					<input type="hidden" name="type" value="achieve">
 					<div class="form-group">
 						{{Form::label('year' , 'Year' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-4">
@@ -233,28 +241,32 @@
 					<div class="form-group">
 						{{Form::label('description' , 'Title' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-10">
-							{{Form::textarea('description' , null, array('class' => 'form-control', 'style' => 'resize:none;'))}}
+							{{Form::textarea('description' , null, array('class' => 'form-control', 'rows' => '2', 'style' => 'resize:none;'))}}
 						</div>
 					</div>
 					<div class="form-group">
 						{{Form::label('' , '' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-4">
 							<input type="submit" class="btn btn-primary" value="Add">
+							<input type="button" class="btn btn-default" value="Cancel" id="data-cancel-btn">
 						</div>
 					</div>
 
 				</form>
 				@endif
-				@foreach($profile_data[2] as $award)
+				@foreach($profile_data[0] as $key => $data)
+				@if($data->type == 'achieve')
 				@include('partials._profile-data-element')
+				@endif
 				@endforeach
 			</div>
 
-			<div class="white-container">
+			<div class="white-container study-container">
 				<h3 style="margin-bottom:30px;color:#337AB7;">Higher Studies</h3>
 				@if($user->id == Auth::id())
-				<span class="fa fa-pencil-square-o add-btn" id="study-add-btn"></span>
-				<form action="{{URL::action('UsersController@addStudy', $user->id)}}" method="post" class="form-horizontal hidden" id="study-add-form">
+				<span class="fa fa-pencil-square-o add-btn" id="data-add-btn"></span>
+				<form action="{{URL::action('UsersController@addProfileData', $user->id)}}" method="post" class="form-horizontal hidden" id="study-add-form">
+					<input type="hidden" name="type" value="study">
 					<div class="form-group">
 						{{Form::label('year' , 'Year' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-4">
@@ -264,28 +276,32 @@
 					<div class="form-group">
 						{{Form::label('description' , 'Title' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-10">
-							{{Form::textarea('description' , null, array('class' => 'form-control', 'style' => 'resize:none;'))}}
+							{{Form::textarea('description' , null, array('class' => 'form-control', 'rows' => '2', 'style' => 'resize:none;'))}}
 						</div>
 					</div>
 					<div class="form-group">
 						{{Form::label('' , '' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-4">
 							<input type="submit" class="btn btn-primary" value="Add">
+							<input type="button" class="btn btn-default" value="Cancel" id="data-cancel-btn">
 						</div>
 					</div>
 
 				</form>
 				@endif
-				@foreach($profile_data[3] as $award)
+				@foreach($profile_data[0] as $key => $data)
+				@if($data->type == 'study')
 				@include('partials._profile-data-element')
+				@endif
 				@endforeach
 			</div>
 
-			<div class="white-container">
+			<div class="white-container csr-container">
 				<h3 style="margin-bottom:30px;color:#337AB7;">Corporate Social Responsibilities</h3>
 				@if($user->id == Auth::id())
-				<span class="fa fa-pencil-square-o add-btn" id="csr-add-btn"></span>
-				<form action="{{URL::action('UsersController@addCsr', $user->id)}}" method="post" class="form-horizontal hidden" id="csr-add-form">
+				<span class="fa fa-pencil-square-o add-btn" id="data-add-btn"></span>
+				<form action="{{URL::action('UsersController@addProfileData', $user->id)}}" method="post" class="form-horizontal hidden" id="csr-add-form">
+					<input type="hidden" name="type" value="csr">
 					<div class="form-group">
 						{{Form::label('year' , 'Year' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-4">
@@ -295,29 +311,49 @@
 					<div class="form-group">
 						{{Form::label('description' , 'Title' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-10">
-							{{Form::textarea('description' , null, array('class' => 'form-control', 'style' => 'resize:none;'))}}
+							{{Form::textarea('description' , null, array('class' => 'form-control', 'rows' => '2', 'style' => 'resize:none;'))}}
 						</div>
 					</div>
 					<div class="form-group">
 						{{Form::label('' , '' , array('class' => 'control-label col-md-2'))}}
 						<div class="col-md-4">
 							<input type="submit" class="btn btn-primary" value="Add">
+							<input type="button" class="btn btn-default" value="Cancel" id="data-cancel-btn">
 						</div>
 					</div>
 
 				</form>
 				@endif
-				@foreach($profile_data[4] as $award)
+				@foreach($profile_data[0] as $key => $data)
+				@if($data->type == 'csr')
 				@include('partials._profile-data-element')
+				@endif
 				@endforeach
 			</div>
 
-			<div class="white-container">
+			<div class="white-container contact-container">
 				<h3 style="margin-bottom:30px;color:#337AB7;">Contact for</h3>
-				@foreach($profile_data[6] as $key => $value)
+				@if($user->id == Auth::id())
+				<span class="fa fa-pencil-square-o add-btn" id="data-add-btn"></span>
+				<form action="{{URL::route('users.edit.contactdata', $user->id)}}" method="post" id="contact-add-form" class="hidden">
+					@foreach($profile_data[2] as $key => $value)
+					@if($value == '0')
+					<div class="checkbox">
+				      <label><input type="checkbox" value="{{$key}}" name="checklist[]">{{$key}}</label>
+				    </div>
+				    @else
+				    <div class="checkbox">
+				      <label><input type="checkbox" value="{{$key}}" name="checklist[]" checked>{{$key}}</label>
+				    </div>
+					@endif
+					@endforeach
+					<input type="submit" value="Update" class="btn btn-primary">
+				</form>
+				@endif
+				@foreach($profile_data[2] as $key => $value)
 				@if($value == '1')
 				<div class="profile-data-element-container">
-					<div class="profile-data-element-year">
+					<div class="profile-data-element-year-contact">
 						<p>{{$key}}</p>
 					</div>
 				</div>

@@ -9,42 +9,11 @@ class UsersController extends \BaseController {
 		// Structure of the profile data
 
 		// array(data)
-		// {
-		// 	array(awards)
-		// 	{
-		// 		'year' => 'description'
-		// 		.
-		// 		.
-		// 		.
-		// 	}
-		// 	array(roles)
-		// 	{
-		// 		'year' => 'description'
-		// 		.
-		// 		.
-		// 		.
-		// 	}
-		// 	array(achievements)
-		// 	{
-		// 		'year' => 'description'
-		// 		.
-		// 		.
-		// 		.
-		// 	}
-		// 	array(studies)
-		// 	{
-		// 		'year' => 'description'
-		// 		.
-		// 		.
-		// 		.
-		// 	}
-		// 	array(CSRs)
-		// 	{
-		// 		'year' => 'description'
-		// 		.
-		// 		.
-		// 		.
-		// 	}
+		//  {
+		//  'key' => obj->type
+		// 				->year
+		// 				->description
+		//  }
 		// array(enterpreneur)
 		//  {
 		// 		'status' => 'value'
@@ -58,9 +27,8 @@ class UsersController extends \BaseController {
 		// 	}	
 		// }
 
-		$obj = new stdClass;
 		$arr = array();
-		$megaArr = array($arr, $arr, $arr, $arr, $arr, array('status' => 0), array('Tech Talks' => 0, 'Workshops' => 0, 'Project Assistance' => 0, 'Guidance' => 0));
+		$megaArr = array($arr, array('status' => 0), array('Tech Talks' => 0, 'Workshops' => 0, 'Project Assistance' => 0, 'Guidance' => 0));
 		$megaArr = json_encode($megaArr);
 		return $megaArr;
 	}
@@ -296,7 +264,7 @@ class UsersController extends \BaseController {
 		$user->update($data);
 		//var_dump($data);
 		
-		return Redirect::route('users.show' , array($id));
+		return Redirect::route('feedback');
 	}
 
 	/**
@@ -392,121 +360,70 @@ class UsersController extends \BaseController {
 		$domain = Domain::findOrFail($id);
 		return View::make('users.domain', compact('domain'));
 	}
-	public function addAward($id)
+	public function addProfileData($id)
 	{
 		$user = User::find($id);
 		$data = json_decode($user->profile_data);
 		$input = Input::all();
+		// var_dump($data);
 		$validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
-		if ($validator->fails())
-		{
+		if ($validator->fails()){
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
-		// var_dump($input);
-		// var_dump($data);
-		// var_dump($data[0]);
 		$node = new stdClass;
+		$node->type = $input['type'];
 		$node->year = $input['year'];
 		$node->description = $input['description'];
-		// var_dump($node);
 		$data[0][] = $node;
-		// array_push($data[0], $input);
 		// var_dump($data);
 		$user->profile_data = json_encode($data);
 		$user->save();
 		return Redirect::route('users.show', $user->id);
 	}
-	public function addRole($id)
+	// public function editProfileData($entry)
+	// {
+	// 	// $user = Auth::user();
+	// 	// $data = json_decode($user->profile_data);
+	// 	// $input = Input::all();
+	// 	// $validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
+	// 	// if ($validator->fails()){
+	// 	// 	return Redirect::back()->withErrors($validator)->withInput();
+	// 	// }
+	// }
+	public function deleteProfileData($key)
 	{
-		$user = User::find($id);
+		$user = Auth::user();
 		$data = json_decode($user->profile_data);
-		$input = Input::all();
-		$validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-		// var_dump($input);
 		// var_dump($data);
-		// var_dump($data[0]);
-		$node = new stdClass;
-		$node->year = $input['year'];
-		$node->description = $input['description'];
-		// var_dump($node);
-		$data[1][] = $node;
-		// array_push($data[0], $input);
+		// foreach($data[0] as $index => $value){
+		// 	if($index == $key){
+		// 		$victim = $value;
+		// 		var_dump($victim);
+		// 		unset($data[0][$index]);
+		// 	}
+		// }
+		unset($data[0][$key]);
 		// var_dump($data);
 		$user->profile_data = json_encode($data);
 		$user->save();
 		return Redirect::route('users.show', $user->id);
 	}
-	public function addAchievement($id)
+	public function addContactForData($id)
 	{
 		$user = User::find($id);
 		$data = json_decode($user->profile_data);
-		$input = Input::all();
-		$validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
+		$input = Input::get('checklist');
+		// var_dump($data);
 		// var_dump($input);
-		// var_dump($data);
-		// var_dump($data[0]);
-		$node = new stdClass;
-		$node->year = $input['year'];
-		$node->description = $input['description'];
-		// var_dump($node);
-		$data[2][] = $node;
-		// array_push($data[0], $input);
-		// var_dump($data);
-		$user->profile_data = json_encode($data);
-		$user->save();
-		return Redirect::route('users.show', $user->id);
-	}
-	public function addStudy($id)
-	{
-		$user = User::find($id);
-		$data = json_decode($user->profile_data);
-		$input = Input::all();
-		$validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
+
+		foreach($data[2] as $role => $status){
+			$data[2]->$role= 0;
+			foreach ($input as $value){
+				if($role == $value){
+					$data[2]->$role = 1;
+				}
+			}
 		}
-		// var_dump($input);
-		// var_dump($data);
-		// var_dump($data[0]);
-		$node = new stdClass;
-		$node->year = $input['year'];
-		$node->description = $input['description'];
-		// var_dump($node);
-		$data[3][] = $node;
-		// array_push($data[0], $input);
-		// var_dump($data);
-		$user->profile_data = json_encode($data);
-		$user->save();
-		return Redirect::route('users.show', $user->id);
-	}
-	public function addCsr($id)
-	{
-		$user = User::find($id);
-		$data = json_decode($user->profile_data);
-		$input = Input::all();
-		$validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-		// var_dump($input);
-		// var_dump($data);
-		// var_dump($data[0]);
-		$node = new stdClass;
-		$node->year = $input['year'];
-		$node->description = $input['description'];
-		// var_dump($node);
-		$data[4][] = $node;
-		// array_push($data[0], $input);
 		// var_dump($data);
 		$user->profile_data = json_encode($data);
 		$user->save();

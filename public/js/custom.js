@@ -125,26 +125,52 @@ $(document).ready(function(){
 		$(".detail-linkedin_link").removeClass("hide");
 		$(".detail-view").addClass("hide");
 	});
-	$("#award-add-btn").on("click", function(){
-		$("#award-add-btn").addClass("hidden");
+	$(".award-container #data-add-btn").on("click", function(){
+		$(".award-container #data-add-btn").addClass("hidden");
 		$("#award-add-form").removeClass("hidden");
 	})
-	$("#role-add-btn").on("click", function(){
-		$("#role-add-btn").addClass("hidden");
+	$(".role-container #data-add-btn").on("click", function(){
+		$(".role-container #data-add-btn").addClass("hidden");
 		$("#role-add-form").removeClass("hidden");
 	})
-	$("#achieve-add-btn").on("click", function(){
-		$("#achieve-add-btn").addClass("hidden");
+	$(".achieve-container #data-add-btn").on("click", function(){
+		$(".achieve-container #data-add-btn").addClass("hidden");
 		$("#achieve-add-form").removeClass("hidden");
 	})
-	$("#study-add-btn").on("click", function(){
-		$("#study-add-btn").addClass("hidden");
+	$(".study-container #data-add-btn").on("click", function(){
+		$(".study-container #data-add-btn").addClass("hidden");
 		$("#study-add-form").removeClass("hidden");
 	})
-	$("#csr-add-btn").on("click", function(){
-		$("#csr-add-btn").addClass("hidden");
+	$(".csr-container #data-add-btn").on("click", function(){
+		$(".csr-container #data-add-btn").addClass("hidden");
 		$("#csr-add-form").removeClass("hidden");
 	})
+	$(".contact-container #data-add-btn").on("click", function(){
+		$(".csr-container #data-add-btn").addClass("hidden");
+		$("#contact-add-form").removeClass("hidden");
+	})
+
+	$(".award-container #data-cancel-btn").on("click", function(){
+		$(".award-container #data-add-btn").removeClass("hidden");
+		$("#award-add-form").addClass("hidden");
+	})
+	$(".role-container #data-cancel-btn").on("click", function(){
+		$(".role-container #data-add-btn").removeClass("hidden");
+		$("#role-add-form").addClass("hidden");
+	})
+	$(".achieve-container #data-cancel-btn").on("click", function(){
+		$(".achieve-container #data-add-btn").removeClass("hidden");
+		$("#achieve-add-form").addClass("hidden");
+	})
+	$(".study-container #data-cancel-btn").on("click", function(){
+		$(".study-container #data-add-btn").removeClass("hidden");
+		$("#study-add-form").addClass("hidden");
+	})
+	$(".csr-container #data-cancel-btn").on("click", function(){
+		$(".csr-container #data-add-btn").removeClass("hidden");
+		$("#csr-add-form").addClass("hidden");
+	})
+
 });
 
 /* Edit Profile */

@@ -36,11 +36,10 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('users/batch/{id}', array('uses' => 'UsersController@batchUser', 'as' => 'users.batch'));
 	Route::get('users/profession/{id}', array('uses' => 'UsersController@professionUser', 'as' => 'users.profession'));
 	Route::get('users/domain/{id}', array('uses' => 'UsersController@domainUser', 'as' => 'users.domain'));
-	Route::post('users/addaward/{id}', array('uses' => 'UsersController@addAward', 'as' => 'users.add.award'));
-	Route::post('users/addrole/{id}', array('uses' => 'UsersController@addRole', 'as' => 'users.add.role'));
-	Route::post('users/addachievement/{id}', array('uses' => 'UsersController@addAchievement', 'as' => 'users.add.achievement'));
-	Route::post('users/addstudy/{id}', array('uses' => 'UsersController@addStudy', 'as' => 'users.add.study'));
-	Route::post('users/addcsr/{id}', array('uses' => 'UsersController@addCsr', 'as' => 'users.add.csr'));
+	Route::post('users/adddata/{id}', array('uses' => 'UsersController@addProfileData', 'as' => 'users.add.data'));
+	Route::post('users/addcontactdata/{id}', array('uses' => 'UsersController@addContactForData', 'as' => 'users.edit.contactdata'));
+	// Route::post('users/edit/{entry}', array('uses' => 'UsersController@editProfileData', 'as' => 'users.edit.data'));
+	Route::get('users/deletedata/{entry}', array('uses' => 'UsersController@deleteProfileData', 'as' => 'users.delete.data'));
 	Route::resource('users','UsersController', array('except' => array('store', 'create')));
 
 	Route::get('jobs/apply/{id}', array('uses' => 'JobsController@apply', 'as' => 'jobs.apply'));

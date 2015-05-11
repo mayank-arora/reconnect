@@ -51,13 +51,13 @@
 		<ul class="list-group">
 			<li class="list-group-item">Cannot add multiple domains ar once.</li>
 			<li class="list-group-item">No way of knowing when you recieve a new message.</li>
-			<li class="list-group-item">Events cannot be created.</li>
+			<li class="list-group-item">Events tab crashes unexpectedly.</li>
 
 		</ul>
 	</div>
 	<div class="col-md-6">
 		<ul class="list-group">	
-			<li class="list-group-item">Cannot access the list of users by location.</li>
+			<li class="list-group-item">Additional profile data cannot be modified.</li>
 			<li class="list-group-item">Manual validation required for every new user.</li>
 			<li class="list-group-item">Cannot hide personal information from other users.
 			</li>

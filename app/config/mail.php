@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'contact@mayankarora.in', 'name' => 'Mayank Arora'),
+	'from' => array('address' => 'reconnect@bmsit.in', 'name' => 'BMSIT Reconnect'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'mayankarora.0992',
+	'username' => 'reconnect@bmsit.in',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'yyxhysfexqdrgoph',
+	'password' => 'hello.world123',
 
 	/*
 	|--------------------------------------------------------------------------

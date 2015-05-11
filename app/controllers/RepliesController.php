@@ -9,16 +9,11 @@ class RepliesController extends \BaseController {
 	 */
 	public function index()
 	{
-		// $user = Auth::user();
-		// $batches = Batch::paginate(5);
+		$user = Auth::user();
+		$data = json_decode($user->profile_data);
+		var_dump($data);
 		// return View::make('replies.index', compact('batches'));
-		$obj = new stdClass;
-		$arr = array($obj);
-		$megaArr = array($arr,$arr,$arr,$arr,$arr,$obj,array($obj,$obj,$obj,$obj));
-		$megaArr = json_encode($megaArr);
-		var_dump($megaArr);
-		$megaArr = json_decode($megaArr);
-		var_dump($megaArr);
+		
 	}
 
 	/**

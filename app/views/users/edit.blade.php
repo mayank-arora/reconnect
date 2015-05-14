@@ -224,6 +224,7 @@ $("#form-branch").addClass("hidden");
 		{{Form::label('new_domain' , 'Add a domain' , array('class' => 'control-label col-md-3', "style" => "color:#337AB7;"))}}
 		<div class="col-md-4">
 			<input type="text" class="new_domain form-control" name="new_domain">
+			<small>If possible add only one domain at a time.</small>
 		</div>
 	</div>
 	<hr>

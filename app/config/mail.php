@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'reconnect@bmsit.in', 'name' => 'BMSIT Reconnect'),
+	'from' => array('address' => 'reconnect@bmsit.in', 'name' => 'Re-Connect BMSIT'),
 
 	/*
 	|--------------------------------------------------------------------------

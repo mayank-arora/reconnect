@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'recon',
 			'username'  => 'root',
-			'password'  => 'way2hell',
+			'password'  => 'Tpig2bn1inbmsit',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

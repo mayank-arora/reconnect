@@ -36,10 +36,13 @@ class EventsController extends \BaseController {
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
+		$guest_list =array();
+		$guest_list = json_encode($guest_list);
+		// var_dump($guest_list);
 
 		Event::create($data);
 
-		return Redirect::route('events.index');
+		// return Redirect::route('events.index');
 	}
 
 	/**
@@ -51,8 +54,9 @@ class EventsController extends \BaseController {
 	public function show($id)
 	{
 		$event = Event::findOrFail($id);
+		$creator = User::find($event->creator_id);
 
-		return View::make('events.show', compact('event'));
+		return View::make('events.show', compact('event', 'creator'));
 	}
 
 	/**
@@ -101,6 +105,10 @@ class EventsController extends \BaseController {
 		Event::destroy($id);
 
 		return Redirect::route('events.index');
+	}
+	public function join($id)
+	{
+
 	}
 
 }

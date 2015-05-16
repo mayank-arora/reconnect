@@ -372,10 +372,10 @@ class UsersController extends \BaseController {
 		$data = json_decode($user->profile_data);
 		$input = Input::all();
 		// var_dump($data);
-		// $validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
-		// if ($validator->fails()){
-		// 	return Redirect::back()->withErrors($validator)->withInput();
-		// }
+		$validator = Validator::make($input, array('year' => 'required|numeric', 'description' => 'required'));
+		if ($validator->fails()){
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
 		$node = new stdClass;
 		$node->type = $input['type'];
 		$node->year = $input['year'];

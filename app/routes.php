@@ -26,10 +26,12 @@ Route::post('resetpassword', array('uses' => 'UsersController@resetPassword', 'a
 Route::group(array('before' => 'auth'), function(){
 	Route::resource('posts', 'PostsController');
 	Route::resource('comments','CommentsController');
-	Route::resource('events','EventsController');
 	Route::resource('discussions','DiscussionsController');
 	Route::resource('replies', 'RepliesController');
 	Route::resource('message', 'MessagesController');
+
+	Route::get('events/join/{id}', array('uses' =>'EventsController@join', 'as' => 'events.join'));
+	Route::resource('events','EventsController');
 
 	Route::post('updateProfilePicture/{id}', array('uses' => 'UsersController@updatePicture', 'as' => 'user.updatePicture'));
 	Route::get('users/location/{id}', array('uses' => 'UsersController@locationUser', 'as' => 'users.location'));

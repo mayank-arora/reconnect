@@ -21,7 +21,7 @@
 	</div>
 	@foreach($events as $event)
 	<div class="col-md-2 hud">
-		<a href="{{URL::route('event.show', $event->id)}}"><span class="link-setter"></span></a>
+		<a href="{{URL::route('events.show', $event->id)}}"><span class="link-setter"></span></a>
 		<div style="text-align:center;">
 			<h3 class="hud-title" style="overflow:visible;padding-top:10px;font-size:14px;">{{$event->title}}</h3>
 		</div>

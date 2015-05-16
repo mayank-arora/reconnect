@@ -22,7 +22,7 @@
 			<div class="form-group">
 				<label for="date" class="col-md-3 control-label">Date and time</label>
 				<div class="col-md-6">
-					<input type="text" name="date"class="form-control">
+					<input type="text" name="date"class="form-control" placeholder="YYYY-MM-DD hh:mm:ss">
 				</div>
 			</div>
 

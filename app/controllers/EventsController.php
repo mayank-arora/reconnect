@@ -111,8 +111,23 @@ class EventsController extends \BaseController {
 	{
 		$event = Event::findOrFail($id);
 		$guest_list = json_decode($event->guest_list);
-		
-		// var_dump($guest_list);
+		$userid = Auth::id();
+		var_dump($guest_list);
+		if($guest_list != null){
+			if(in_array($userid, $guest_list)){}
+			else{
+				$guest_list[] = $userid;
+			}
+		}
+		else{
+			$guest_list[] = $userid;
+		}
+		var_dump($guest_list);
+		var_dump(json_encode($guest_list));
+		$event->guest_list = json_encode($guest_list);
+		$event->save();
+		return Redirect::route('events.show',$event->id);
+
 	}
 
 }

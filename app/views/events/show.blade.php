@@ -33,8 +33,16 @@
 	</div>
 	<div class="col-md-4">
 		<div class="white-container">
-			<h2>Created by</h2>
+			<h4>Created by</h4>
 			<p><a href="{{URL::route('users.show', $creator->id)}}">{{$creator->fname}} {{$creator->lname}}</a></p>
+			<br>
+			<h4>People attending</h4>
+			@foreach(json_decode($event->guest_list) as $guest)
+			<?php
+			$user = User::find($guest);
+			?>
+			<a href="{{URL::route('users.show', $user->id)}}">{{$user->fname}} {{$user->lname}}</a>
+			@endforeach
 		</div>
 	</div>
 

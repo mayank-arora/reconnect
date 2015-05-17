@@ -20,14 +20,14 @@
 			<p>{{$event->date}} {{$event->time}}</p>
 			<hr>
 			<br>
-			<h4>Description</h4>
+			<h4>Details</h4>
 			<p>{{$event->detail}}</p>
 			<hr>
 			<br>
 			<h4>Location</h4>
 			<p>{{$event->location}}</p><br><br>
 			@if($creator->id == Auth::id())
-			<a href="{{URL::route('events.join', Auth::id())}}" class="btn btn-primary col-md-2">Join</a>
+			<a href="{{URL::route('events.join', $event->id)}}" class="btn btn-primary col-md-2">Join</a>
 			@endif
 		</div>
 	</div>

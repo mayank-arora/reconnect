@@ -42,7 +42,7 @@
 			<div class="form-group">
 				<label for="detail" class="col-md-3 control-label">Details (If any)</label>
 				<div class="col-md-6">
-					<textarea style="resize:none;" name="description" rows="10" class="form-control"></textarea>
+					<textarea style="resize:none;" name="detail" rows="10" class="form-control"></textarea>
 				</div>
 			</div>
 

@@ -38,7 +38,7 @@ class EventsController extends \BaseController {
 		}
 		$data['creator_id'] = Auth::id();
 		$guest_list =array();
-		$guest_list = json_encode($guest_list);
+		$data['guest_list']= json_encode($guest_list);
 		// var_dump($guest_list);
 
 		Event::create($data);
@@ -109,7 +109,10 @@ class EventsController extends \BaseController {
 	}
 	public function join($id)
 	{
-
+		$event = Event::findOrFail($id);
+		$guest_list = json_decode($event->guest_list);
+		
+		// var_dump($guest_list);
 	}
 
 }

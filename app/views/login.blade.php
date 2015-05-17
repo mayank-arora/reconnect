@@ -117,7 +117,7 @@
 			</div>
 
 			<div class="login-register-form hidden">
-				{{Form::open(array('action' => 'UsersController@store','method' => 'post'))}}
+				{{Form::open(array('route' => 'users.store','method' => 'post'))}}
 
 				<input type="text" value="{{Input::old('fname', '')}}" name="fname"  class="login-form-input" placeholder="First Name" id="login-fname-input"><br>
 				<span class="login-error-text">

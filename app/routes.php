@@ -15,7 +15,7 @@ Route::get('/', array('uses' => 'HomeController@showLogin' , 'as' => 'home.login
 Route::get('login', array('uses' => 'HomeController@showLogin' , 'as' => 'home.art.login'));
 Route::post('login', array('uses' => 'HomeController@attemptLogin', 'as' => 'users.login'));
 Route::get('logout', array('uses' => 'HomeController@logout', 'as' => 'users.logout'));
-Route::post('users', array('uses' => 'UsersController@store', 'as' => 'users.store'));
+Route::post('newuser', array('uses' => 'UsersController@store', 'as' => 'users.store'));
 Route::get('users/verify/{token}', array('uses' => 'UsersController@verify', 'as' => 'users.verify'));
 Route::get('password/reset/{token}', array('uses' => 'UsersController@getForgottenUser', 'as' => 'users.password.new'));
 Route::post('password/new/{id}', array('uses' => 'UsersController@setNewPassword', 'as' => 'users.password.set'));
@@ -40,7 +40,6 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('users/domain/{id}', array('uses' => 'UsersController@domainUser', 'as' => 'users.domain'));
 	Route::post('users/adddata/{id}', array('uses' => 'UsersController@addProfileData', 'as' => 'users.add.data'));
 	Route::post('users/addcontactdata/{id}', array('uses' => 'UsersController@addContactForData', 'as' => 'users.edit.contactdata'));
-	// Route::post('users/edit/{entry}', array('uses' => 'UsersController@editProfileData', 'as' => 'users.edit.data'));
 	Route::get('users/deletedata/{entry}', array('uses' => 'UsersController@deleteProfileData', 'as' => 'users.delete.data'));
 	Route::resource('users','UsersController', array('except' => array('store', 'create')));
 

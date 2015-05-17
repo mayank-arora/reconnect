@@ -8,7 +8,7 @@ class Event extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = ['picture', 'title', 'date', 'detail', 'creator_id', 'location', 'guest_list'];
+	protected $fillable = ['picture', 'title', 'date', 'time', 'detail', 'creator_id', 'location', 'guest_list'];
 
 	public function user(){
 		return $this->belongsTo("User");

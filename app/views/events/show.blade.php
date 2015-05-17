@@ -17,7 +17,7 @@
 			<hr>
 			<br>
 			<h4>Date and time</h4>
-			<p>{{$event->date}}</p>
+			<p>{{$event->date}} {{$event->time}}</p>
 			<hr>
 			<br>
 			<h4>Description</h4>

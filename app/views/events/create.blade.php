@@ -20,15 +20,21 @@
 			</div>
 
 			<div class="form-group">
-				<label for="date" class="col-md-3 control-label">Date and time</label>
-				<div class="col-md-6">
-					<input type="text" name="date"class="form-control" placeholder="YYYY-MM-DD hh:mm:ss">
+				<label for="date" class="col-md-3 control-label">Date</label>
+				<div class="col-md-3">
+					<input type="text" name="date"class="form-control datepicker">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="time" class="col-md-3 control-label">Time</label>
+				<div class="col-md-3">
+					<input type="text" name="time"class="form-control">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="location" class="col-md-3 control-label">Location</label>
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<input type="text" name="location"class="form-control">
 				</div>
 			</div>

@@ -36,13 +36,14 @@ class EventsController extends \BaseController {
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
+		$data['creator_id'] = Auth::id();
 		$guest_list =array();
 		$guest_list = json_encode($guest_list);
 		// var_dump($guest_list);
 
 		Event::create($data);
 
-		// return Redirect::route('events.index');
+		return Redirect::route('events.index');
 	}
 
 	/**

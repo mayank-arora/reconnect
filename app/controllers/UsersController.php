@@ -50,7 +50,7 @@ class UsersController extends \BaseController {
 		// var_dump($user->fname);
 		$token = $user->token;
 		// var_dump($token);
-		Mail::send('emails.auth.verify', array('token' => $token), function($message) use ($email, $fname, $lname)
+		Mail::send('emails.auth.verify', array('token' => $token, 'fname' => $fname, 'lname' => $lname), function($message) use ($email)
 		{
 			$message->to($email)->subject('Verify your account for BMSITM Reconnect');
 		});

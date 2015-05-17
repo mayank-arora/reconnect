@@ -46,9 +46,17 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 |
 */
 
-App::error(function(Exception $exception, $code)
+App::error(function(\Symfony\Component\HttpKernel\Exception\NotFoundHttpException $exception, $code)
 {
 	Log::error($exception);
+   // handle the exception and show view or redirect to a diff route
+    return View::make('errors.not-found');
+});
+App::error(function(Illuminate \ Database \ Eloquent \ ModelNotFoundException $exception, $code)
+{
+	Log::error($exception);
+   // handle the exception and show view or redirect to a diff route
+    return View::make('errors.not-found');
 });
 
 /*
@@ -77,5 +85,9 @@ App::down(function()
 | definitions instead of putting them all in the main routes file.
 |
 */
+App::missing(function($exception)
+{
+    
+});
 
 require app_path().'/filters.php';

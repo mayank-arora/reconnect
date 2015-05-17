@@ -42,7 +42,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::post('users/addcontactdata/{id}', array('uses' => 'UsersController@addContactForData', 'as' => 'users.edit.contactdata'));
 	// Route::post('users/edit/{entry}', array('uses' => 'UsersController@editProfileData', 'as' => 'users.edit.data'));
 	Route::get('users/deletedata/{entry}', array('uses' => 'UsersController@deleteProfileData', 'as' => 'users.delete.data'));
-	Route::resource('users','UsersController', array('except' => array('store', 'create', 'index')));
+	Route::resource('users','UsersController', array('except' => array('store', 'create')));
 
 	Route::get('jobs/apply/{id}', array('uses' => 'JobsController@apply', 'as' => 'jobs.apply'));
 	Route::get('jobs/company/{id}', array('uses' => 'JobsController@companyJob', 'as' => 'company.jobs'));

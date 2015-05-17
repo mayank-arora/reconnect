@@ -136,6 +136,10 @@ class UsersController extends \BaseController {
 			return Redirect::route('home.login');
 		}
 	}
+	public function index()
+	{
+		return View::make('errors.not-found');
+	}
 
 	/**
 	 * Store a newly created user in storage.
@@ -180,7 +184,7 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$user = User::find($id);
+		$user = User::findOrFail($id);
 		$profile_data = json_decode($user->profile_data);
 		return View::make('users.show', compact('user', 'profile_data'));
 	}
@@ -193,7 +197,7 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$user = User::find($id);
+		$user = User::findOrFail($id);
 		$curr_user_id=Auth::id();
 		$professions = Profession::all();
 		$batches = Batch::orderBy('id', 'desc')->get();

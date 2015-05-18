@@ -1,0 +1,9 @@
+*.swp
+config.ini
+iron.json
+.DS_Store
+*.esproj/
+.idea/
+
+vendor/
+composer.lock

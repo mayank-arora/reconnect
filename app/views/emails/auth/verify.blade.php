@@ -18,8 +18,6 @@
 
 		This is an automated email. If you did not register on our website, please ignore this message. In case of subsequent emails please report the issue at <a href="mailto:reconnect@bmsit.in">BMSITM Reconnect</a>.<br><br>
 
-
-
 		Happy Reconnecting,<br>
 		Team Reconnect, BMS Institute of Technology and Management <br><br>
 		&copy; Reconnect, 2015

@@ -179,7 +179,7 @@ $("#form-branch").addClass("hidden");
 		</div>
 	</div>
 	<div class="form-group">
-		{{Form::label('fb_link' , 'Facebook Profile' , array('class' => 'control-label col-md-3'))}}
+		{{Form::label('fb_link' , 'Facebook Username' , array('class' => 'control-label col-md-3'))}}
 		<div class="col-md-5">
 			{{Form::text('fb_link' , null, array('class' => 'form-control'))}}
 		</div>

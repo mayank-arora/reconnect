@@ -146,7 +146,7 @@
 
 					<div class="social-links-div">
 						@if($user->fb_link!=NULL)
-						<a href="{{$user->fb_link}}" target="_blank" class="social-links"><span class="fa fa-facebook-official"></span></a>
+						<a href="https://www.facebook.com/{{$user->fb_link}}" target="_blank" class="social-links"><span class="fa fa-facebook-official"></span></a>
 						@endif
 						@if($user->linkedin_link!=NULL)
 						<a href="{{$user->linkedin_link}}" target="_blank" class="social-links"><span class="fa fa-linkedin"></span></a>

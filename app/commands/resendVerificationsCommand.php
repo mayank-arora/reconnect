@@ -44,7 +44,7 @@ class resendVerificationsCommand extends Command {
 				$email = $user->email;
 				Mail::send('emails.auth.verify', array('token' => $user->token, 'fname' => $user->fname, 'lname' => $user->lname), function ($message) use ($email)
 				{
-					$message->to($email)->subject('Verify your account for BMSITM Reconnect');
+					$message->to($email)->subject('Reminder : Verify your account for BMSITM Reconnect');
 				});
 			}catch (Exception $e) {
 		// Probably invalid email address

@@ -49,7 +49,7 @@
 	<h4 class="title-div">Known issues</h4>
 	<div class="col-md-6">
 		<ul class="list-group">
-			<li class="list-group-item">Cannot add multiple domains ar once.</li>
+			<li class="list-group-item">Cannot add multiple domains at once.</li>
 			<li class="list-group-item">No way of knowing when you recieve a new message.</li>
 			<li class="list-group-item">Need to enhance the RSVPs.</li>
 

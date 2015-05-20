@@ -287,9 +287,9 @@ class UsersController extends \BaseController {
 		unset($data['new_domain']);
 
 		$user->update($data);
-		var_dump($domains);
+		// var_dump($domains);
 		
-		// return Redirect::route('feedback');
+		return Redirect::route('feedback');
 	}
 
 	/**

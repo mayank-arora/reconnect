@@ -180,7 +180,10 @@ $("#form-branch").addClass("hidden");
 	</div>
 	<div class="form-group">
 		{{Form::label('fb_link' , 'Facebook Username' , array('class' => 'control-label col-md-3'))}}
-		<div class="col-md-5">
+		<div class="col-md-2" style="min-height:35px;">
+			<span style="vertical-align:-6px;">www.facebook.com/</span>
+		</div>
+		<div class="col-md-3">
 			{{Form::text('fb_link' , null, array('class' => 'form-control'))}}
 		</div>
 	</div>

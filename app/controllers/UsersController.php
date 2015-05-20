@@ -255,11 +255,26 @@ class UsersController extends \BaseController {
 		// var_dump($domains);
 		if($data['new_domain'] != '')
 		{
-			$domain = Domain::create(array('name' => $data['new_domain']));
-			$domain =array($domain->id);
-			// var_dump($domain);
-			$domains = array_merge($domains, $domain);
-			// var_dump($domains);
+			$domain_flag = 0;
+			$existing_domains = Domain::all();
+			foreach ($existing_domains as $domain) {
+				if(strcasecmp($data['new_domain'], $domain->name) == 0){
+					$domain_flag = 1;
+					$domain_id = $domain->id;
+				}
+			}
+			if($domain_flag == 0){
+				$domain = Domain::create(array('name' => $data['new_domain']));
+				$domain =array($domain->id);
+				$domains = array_merge($domains, $domain);
+			}
+			else{
+				if(in_array($domain_id, $domains)){}
+					else{
+						$domain = array($domain_id);
+						$domains = array_merge($domains, $domain);
+					}
+			}
 			$user->domains()->sync($domains);
 			
 		}
@@ -272,9 +287,9 @@ class UsersController extends \BaseController {
 		unset($data['new_domain']);
 
 		$user->update($data);
-		//var_dump($data);
+		var_dump($domains);
 		
-		return Redirect::route('feedback');
+		// return Redirect::route('feedback');
 	}
 
 	/**

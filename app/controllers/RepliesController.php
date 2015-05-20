@@ -9,10 +9,7 @@ class RepliesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$user = Auth::user();
-		$data = json_decode($user->profile_data);
-		var_dump($data);
-		var_dump(array_values($data));
+		
 		// return View::make('replies.index', compact('batches'));
 		
 	}

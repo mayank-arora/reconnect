@@ -479,7 +479,7 @@ a{
 	border-radius: 4px;
 	box-shadow: 1px 1px 2px #bbb;
 	margin: 0 15px 15px 0;
-	/*min-height: 400px;*/
+	min-height: 270px;
 	-webkit-transition: box-shadow .5s;
 	transition: box-shadow .5s;
 	

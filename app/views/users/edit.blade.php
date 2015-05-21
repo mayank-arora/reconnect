@@ -75,6 +75,8 @@ $("#form-branch").addClass("hidden");
 				@foreach($batches as $batch)
 				@if($user->batch_id == $batch->id)
 				{{'<option selected value="'.$batch->id.'">'.$batch->value.'</option>'}}
+				@elseif($batch->id == 16)
+				{{'<option selected value="'.$batch->id.'">'.$batch->value.'</option>'}}
 				@else
 				{{'<option value="'.$batch->id.'">'.$batch->value.'</option>'}}
 				@endif
@@ -113,7 +115,7 @@ $("#form-branch").addClass("hidden");
 	<div class="form-group">
 		{{Form::label('location_id' , 'Current Location' , array('class' => 'control-label col-md-3'))}}
 		<div class="col-md-5">
-			<input type="text" name="location_id" class="form-control" id="autocomplete" 
+			<input type="text" name="location_id" class="form-control" id="autocomplete"
 			value="{{$user->location->location or ''}}">
 		</div>
 	</div>

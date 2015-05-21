@@ -13,9 +13,9 @@ return array(
 	|
 	| Supported: "sync", "beanstalkd", "sqs", "iron", "redis"
 	|
-	*/
+	 */
 
-	'default' => 'iron',
+	'default'     => 'sync',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,11 +26,11 @@ return array(
 	| is used by your application. A default configuration has been added
 	| for each back-end shipped with Laravel. You are free to add more.
 	|
-	*/
+	 */
 
 	'connections' => array(
 
-		'sync' => array(
+		'sync'       => array(
 			'driver' => 'sync',
 		),
 
@@ -41,7 +41,7 @@ return array(
 			'ttr'    => 60,
 		),
 
-		'sqs' => array(
+		'sqs'        => array(
 			'driver' => 'sqs',
 			'key'    => 'your-public-key',
 			'secret' => 'your-secret-key',
@@ -49,7 +49,7 @@ return array(
 			'region' => 'us-east-1',
 		),
 
-		'iron' => array(
+		'iron'       => array(
 			'driver'  => 'iron',
 			'host'    => 'mq-aws-us-east-1.iron.io',
 			'token'   => 'oDILwVnhfpLfA1uSUsF4H4KzPEc',
@@ -58,7 +58,7 @@ return array(
 			'encrypt' => true,
 		),
 
-		'redis' => array(
+		'redis'      => array(
 			'driver' => 'redis',
 			'queue'  => 'default',
 		),
@@ -74,9 +74,9 @@ return array(
 	| can control which database and table are used to store the jobs that
 	| have failed. You may change them to any database / table you wish.
 	|
-	*/
+	 */
 
-	'failed' => array(
+	'failed'      => array(
 
 		'database' => 'mysql', 'table' => 'failed_jobs',
 

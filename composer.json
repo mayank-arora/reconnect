@@ -11,7 +11,8 @@
 		"raveren/kint": "0.9.*@dev",
 		"intervention/image": "dev-master",
 		"barryvdh/laravel-debugbar" : "~1.8",
-		"iron-io/iron_mq": "dev-master"
+		"iron-io/iron_mq": "dev-master",
+		"pda/pheanstalk": "3.0.*@dev"
 	},
 	"autoload": {
 		"classmap": [

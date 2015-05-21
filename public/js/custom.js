@@ -55,45 +55,65 @@ Search tab
 
 
 $(document).ready(function(){
-	$(".location-tab").on("click", function(){
-		$("#search-location-tab").addClass("active");
-		$("#search-batch-tab").removeClass("active");
+	$(".batch-tab").on("click", function(){
+		$("#search-batch-tab").addClass("active");
+		$("#search-branch-tab").removeClass("active");
+		$("#search-location-tab").removeClass("active");
 		$("#search-profession-tab").removeClass("active");
 		$("#search-domain-tab").removeClass("active");
-		$("#map-canvas").removeClass("hide");
-		$(".profession-container").addClass("hide");
-		$(".batch-container").addClass("hide");
-		$(".domain-container").addClass("hide");
+		$("#map-canvas").addClass("hidden");
+		$(".profession-container").addClass("hidden");
+		$(".branch-container").addClass("hidden");
+		$(".batch-container").removeClass("hidden");
+		$(".domain-container").addClass("hidden");
+	});
+	$(".branch-tab").on("click", function(){
+		$("#search-branch-tab").addClass("active");
+		$("#search-batch-tab").removeClass("active");
+		$("#search-location-tab").removeClass("active");
+		$("#search-profession-tab").removeClass("active");
+		$("#search-domain-tab").removeClass("active");
+		$("#map-canvas").addClass("hidden");
+		$(".profession-container").addClass("hidden");
+		$(".batch-container").addClass("hidden");
+		$(".branch-container").removeClass("hidden");
+		$(".domain-container").addClass("hidden");
 	});
 	$(".profession-tab").on("click", function(){
 		$("#search-profession-tab").addClass("active");
 		$("#search-location-tab").removeClass("active");
 		$("#search-batch-tab").removeClass("active");
 		$("#search-domain-tab").removeClass("active");
-		$("#map-canvas").addClass("hide");
-		$(".profession-container").removeClass("hide");
-		$(".batch-container").addClass("hide");
-		$(".domain-container").addClass("hide");
-	});
-	$(".batch-tab").on("click", function(){
-		$("#search-batch-tab").addClass("active");
-		$("#search-location-tab").removeClass("active");
-		$("#search-profession-tab").removeClass("active");
-		$("#search-domain-tab").removeClass("active");
-		$("#map-canvas").addClass("hide");
-		$(".profession-container").addClass("hide");
-		$(".batch-container").removeClass("hide");
-		$(".domain-container").addClass("hide");
+		$("#search-branch-tab").removeClass("active");
+		$(".branch-container").addClass("hidden");
+		$("#map-canvas").addClass("hidden");
+		$(".profession-container").removeClass("hidden");
+		$(".batch-container").addClass("hidden");
+		$(".domain-container").addClass("hidden");
 	});
 	$(".domain-tab").on("click", function(){
 		$("#search-domain-tab").addClass("active");
 		$("#search-location-tab").removeClass("active");
 		$("#search-profession-tab").removeClass("active");
 		$("#search-batch-tab").removeClass("active");
-		$("#map-canvas").addClass("hide");
-		$(".profession-container").addClass("hide");
-		$(".batch-container").addClass("hide");
-		$(".domain-container").removeClass("hide");
+		$("#search-branch-tab").removeClass("active");
+		$(".branch-container").addClass("hidden");
+		$("#map-canvas").addClass("hidden");
+		$(".profession-container").addClass("hidden");
+		$(".batch-container").addClass("hidden");
+		$(".domain-container").removeClass("hidden");
+	});
+	$(".location-tab").on("click", function(){
+		$("#search-location-tab").addClass("active");
+		$("#search-batch-tab").removeClass("active");
+		$("#search-profession-tab").removeClass("active");
+		$("#search-domain-tab").removeClass("active");
+		$("#search-branch-tab").removeClass("active");
+		$(".branch-container").addClass("hidden");
+		$("#map-canvas").removeClass("hidden");
+		$(".profession-container").addClass("hidden");
+		$(".batch-container").addClass("hidden");
+		$(".domain-container").addClass("hidden");
 	});
 });
 

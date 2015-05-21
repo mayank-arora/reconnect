@@ -470,7 +470,7 @@ a{
 -------------Search Tab-----------
 ----------------------------------*/
 
-#search-location-tab, #search-profession-tab,#search-batch-tab, #search-domain-tab{
+#search-location-tab, #search-profession-tab,#search-batch-tab, #search-domain-tab, #search-branch-tab{
 	cursor: pointer;
 }
 

@@ -133,7 +133,7 @@ $("#form-branch").addClass("hidden");
 		{{Form::label('dob' , 'Date of Birth' , array('class' => 'control-label col-md-3'))}}
 		<div class="col-md-3">
 			<div class="date ">
-				{{Form::text('dob' , null, array('class' => 'form-control datepicker', 'placeholder' => 'DD-MM-YYYY'))}}
+				{{Form::text('dob' , null, array('class' => 'form-control datepicker', 'placeholder' => 'DD-MM-YYYY', 'style' => 'padding-left:15px;'))}}
 			</div>
 		</div>
 	</div>

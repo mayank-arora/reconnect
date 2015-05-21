@@ -376,6 +376,11 @@ class UsersController extends \BaseController {
 		$batch = Batch::findOrFail($id);
 		return View::make('users.batch', compact('batch', 'id'));
 	}
+	public function branchUser($id)
+	{
+		$branch = Branch::findOrFail($id);
+		return View::make('users.branch', compact('branch', 'id'));
+	}
 
 	/**
 	 * Displaying the users based on their domain

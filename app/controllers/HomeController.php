@@ -61,7 +61,8 @@ class HomeController extends BaseController {
 		$professions = Profession::all();
 		$domains = Domain::has('users')->orderBy('name', 'asc')->get();
 		$batches=Batch::orderby('id', 'desc')->get();
-		return View::make('search', array('locations' => $locations, 'batches' => $batches, 'professions' => $professions, 'domains' => $domains));
+		$branches = Branch::all();
+		return View::make('search', array('locations' => $locations, 'batches' => $batches, 'professions' => $professions, 'domains' => $domains, 'branches' => $branches));
 	}
 	public function showDiscussion()
 	{

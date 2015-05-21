@@ -36,6 +36,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::post('updateProfilePicture/{id}', array('uses' => 'UsersController@updatePicture', 'as' => 'user.updatePicture'));
 	Route::get('users/location/{id}', array('uses' => 'UsersController@locationUser', 'as' => 'users.location'));
 	Route::get('users/batch/{id}', array('uses' => 'UsersController@batchUser', 'as' => 'users.batch'));
+	Route::get('users/branch/{id}', array('uses' => 'UsersController@branchUser', 'as' => 'users.branch'));
 	Route::get('users/profession/{id}', array('uses' => 'UsersController@professionUser', 'as' => 'users.profession'));
 	Route::get('users/domain/{id}', array('uses' => 'UsersController@domainUser', 'as' => 'users.domain'));
 	Route::post('users/adddata/{id}', array('uses' => 'UsersController@addProfileData', 'as' => 'users.add.data'));

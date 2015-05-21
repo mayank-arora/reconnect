@@ -76,25 +76,44 @@ google.maps.event.addDomListener(window, 'load', initialize);
 @section('body')
 <div class="container">
   <ul class="nav nav-tabs">
-    <li id="search-location-tab" role="presentation" class="active"><a class="location-tab">Location</a></li>
+    <li id="search-batch-tab" role="presentation" class="active"><a class="batch-tab">Batch</a></li>
+    <li id="search-branch-tab" role="presentation"><a class="branch-tab">Branch</a></li>
     <li id="search-profession-tab" role="presentation"><a class="profession-tab">Profession</a></li>
-    <li id="search-batch-tab" role="presentation"><a class="batch-tab">Batch</a></li>
     <li id="search-domain-tab" role="presentation"><a class="domain-tab">Domain</a></li>
+    <li id="search-location-tab" role="presentation"><a class="location-tab">Location</a></li>
   </ul>
-  <div id="map-canvas"></div>
-  <div class="profession-container hide">
+  <div id="map-canvas" class="hidden"></div>
+  <div class="profession-container hidden">
     <div class="gap"></div>
     @foreach($professions as $profession)
     @include('partials._profession-hud')
     @endforeach
   </div>
-  <div class="batch-container hide">
+  <div class="batch-container">
     <div class="gap"></div>
     @foreach($batches as $batch)
-    @include('partials._batch-hud')
+    <div class="col-md-2 hud">
+      <a href="{{URL::route('users.batch', $batch->id)}}"><span class="link-setter"></span></a>
+      <div style="text-align:center;">
+        <h3 class="hud-title" style="overflow:visible;padding-top:10px;font-size:14px;">{{$batch->value}}</h3>
+      </div>
+      <p class="hud-text" style="font-size:56px; overflow:visible;">{{$batch->users->count()}}</p>
+    </div>
     @endforeach
   </div>
-  <div class="domain-container hide">
+  <div class="branch-container hidden">
+    <div class="gap"></div>
+    @foreach($branches as $branch)
+    <div class="col-md-2 hud">
+      <a href="{{URL::route('users.branch', $branch->id)}}"><span class="link-setter"></span></a>
+      <div style="text-align:center;">
+        <h3 class="hud-title" style="overflow:visible;padding-top:10px;font-size:14px;">{{$branch->short}}</h3>
+      </div>
+      <p class="hud-text" style="font-size:56px; overflow:visible;">{{$branch->users->count()}}</p>
+    </div>
+    @endforeach
+  </div>
+  <div class="domain-container hidden">
     <div class="gap"></div>
     @foreach($domains as $domain)
     @include('partials._domain-hud')

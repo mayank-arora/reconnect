@@ -1,7 +1,7 @@
 @extends('layouts.boilerplate')
 
 @section('title')
-<title>404 not Found</title>
+<title>Website Down</title>
 @overwrite
 
 @section('body')

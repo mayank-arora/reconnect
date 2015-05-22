@@ -197,13 +197,23 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 	$("#batch").on("change", function(){
-		var branch_val = $("#batch").val();
-		if (branch_val == 20) {
+		var batch_val = $("#batch").val();
+		if (batch_val == 20) {
 			$("#form-degree").addClass("hidden");
 			$("#form-branch").addClass("hidden");
 		}
 		else{
 			$("#form-degree").removeClass("hidden");
+			$("#form-branch").removeClass("hidden");
+		};
+	});
+	$("#degree").on("change", function(){
+		var degree_val = $("#degree").val();
+		if (degree_val == 4) {
+			$("#form-branch").addClass("hidden");
+			$("#branch").val(8);
+		}
+		else{
 			$("#form-branch").removeClass("hidden");
 		};
 	});

@@ -9,6 +9,6 @@
 	<div class="gap"></div>
 	<div class="gap"></div>
 	<div class="gap"></div>
-	<h1>The website is down for maintainance. Be right back!</h1>
+	<h1>The website is down for maintenance. Be right back!</h1>
 </div>
 @overwrite

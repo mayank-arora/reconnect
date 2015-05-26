@@ -16,14 +16,6 @@ function fillLocation(){
 	var place = autocomplete.getPlace();
 }
 </script>
-@if($user->batch_id == 0 || $user->batch_id == 20)
-{{'<script>
-$("document").ready(function(){
-$("#form-degree").addClass("hidden");
-$("#form-branch").addClass("hidden");
-});
-</script>'}}
-@endif
 @overwrite
 
 

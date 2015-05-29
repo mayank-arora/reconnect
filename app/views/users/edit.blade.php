@@ -150,8 +150,6 @@ function fillLocation(){
 				@foreach($companies as $company)
 				@if($user->company_id == $company->id)
 				{{ '<option selected value="'.$company->id.'">'.$company->name.'</option>'}}
-				@elseif($company->id == 6)
-				{{ '<option selected value="'.$company->id.'">'.$company->name.'</option>'}}
 				@else
 				{{ '<option value="'.$company->id.'">'.$company->name.'</option>'}}
 				@endif

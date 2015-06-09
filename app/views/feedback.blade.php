@@ -28,7 +28,7 @@
 }
 .white-container{
 	padding-left:0;
-	padding-right: 0; 
+	padding-right: 0;
 	padding-bottom: 0;
 }
 
@@ -43,7 +43,7 @@
 <div class="container">
 	<div class="title-div">
 		<h1 class="title">The website is still under development.</h1>
-		<h4>Encounter any bug? Or have any sugesstions? Contact us!</h4>
+		<h4>Encounter any bug? Or have any suggestions? Contact us!</h4>
 	</div>
 	<div class="gap"></div>
 	<h4 class="title-div">Known issues</h4>
@@ -56,7 +56,7 @@
 		</ul>
 	</div>
 	<div class="col-md-6">
-		<ul class="list-group">	
+		<ul class="list-group">
 			<li class="list-group-item">No notifications of our activity or activity related to us yet.</li>
 			<li class="list-group-item">Manual validation required for every new user.</li>
 			<li class="list-group-item">Cannot hide personal information from other users.
